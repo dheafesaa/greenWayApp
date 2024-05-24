@@ -35,7 +35,7 @@ function HamburgerMenu({ authUser, signOut }) {
   ];
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, marginBottom: 7 }}>
       <AppBar position="fixed" sx={{ background: Colors.secondary.soft, boxShadow: 'none' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <ResponsiveFontSizes variant="h4" fontWeight="600">
@@ -46,11 +46,11 @@ function HamburgerMenu({ authUser, signOut }) {
             <>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
                 {authUser ? (
-                  <Button size="medium" py={0.3} onClick={signOut} fullWidth={false} fontWeight={600}>
+                  <Button size="large" py={0.5} onClick={signOut} fullWidth={false} fontWeight={600}>
                     Sign Out
                   </Button>
                 ) : (
-                  <Button size="medium" py={0.3} fullWidth={false} fontWeight={600}>Login</Button>
+                  <Button size="large" py={0.5} fullWidth={false} fontWeight={600}>Login</Button>
                 )}
                 <IconButton
                   edge="start"
@@ -67,6 +67,11 @@ function HamburgerMenu({ authUser, signOut }) {
                 keepMounted
                 open={Boolean(anchorEl)}
                 onClose={handleMenuClose}
+                sx={{
+                  '& .MuiPaper-root': {
+                    backgroundColor: Colors.secondary.soft,
+                  },
+                }}
               >
                 {menuItems.map((item) => (
                   <MenuItem
@@ -74,6 +79,10 @@ function HamburgerMenu({ authUser, signOut }) {
                     onClick={handleMenuClose}
                     component={Link}
                     to={item.path}
+                    sx={{
+                      color: Colors.primary.hard,
+                      fontWeight: 600,
+                    }}
                   >
                     {item.label}
                   </MenuItem>
@@ -96,11 +105,11 @@ function HamburgerMenu({ authUser, signOut }) {
                 ))}
               </Box>
               {authUser ? (
-                <Button size="medium" py={0.5} onClick={signOut} fullWidth={false} fontWeight={600}>
+                <Button size="large" py={0.5} onClick={signOut} fullWidth={false} fontWeight={600}>
                   Sign Out
                 </Button>
               ) : (
-                <Button size="medium" py={0.5} fullWidth={false} fontWeight={600}>Login</Button>
+                <Button size="large" py={0.5} fullWidth={false} fontWeight={600}>Login</Button>
               )}
             </>
           )}
