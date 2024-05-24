@@ -8,7 +8,7 @@ function CardImage({ src, alt }) {
   const theme = useTheme();
   const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
 
-  const width = isMobileOrTablet ? '100%' : '60%';
+  const width = isMobileOrTablet ? '100%' : '50%';
 
   return (
     <Box

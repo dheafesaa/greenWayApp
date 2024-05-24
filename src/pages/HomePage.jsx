@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import HeroLayout from '../components/organisms/HeroLayout';
 import ItemCategory from '../components/organisms/ItemCategory';
-import SubContent from '../components/organisms/SubContent';
+import ProductLayout from '../components/organisms/ProductLayout';
 import ItemPurpose from '../components/organisms/ItemPurpose';
 import CampaignList from '../components/organisms/CampaignList';
 import Testimoni from '../components/organisms/Testimoni';
@@ -30,7 +30,7 @@ function HomePage() {
         imageUrl="/src/assets/landing-1.png"
       />
       <ItemCategory />
-      <SubContent
+      <ProductLayout
         title="Eco Friendly Travel For Better Future"
         description="Welcome to a new era of travel where adventure meets environmental stewardship.
         Your Gateway to Sustainable Exploration in Indonesia! Start your journey with us and traverse
