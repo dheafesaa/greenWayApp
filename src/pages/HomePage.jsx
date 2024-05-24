@@ -43,7 +43,8 @@ function HomePage() {
       <Videos />
       <CommunityLayout
         title="Community Is Calling, No Need to Stalling"
-        description="Join our discussion community! Discover new ideas and exchange experiences with thousands of members. Let's join now!"
+        description="Join our discussion community! Discover new ideas and exchange experience
+        with thousands of members. Let's join now!"
         imageUrl="/src/assets/communityLayout.png"
       />
     </section>

@@ -1,28 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
+import { Box, useMediaQuery, useTheme } from '@mui/material';
 import CardImage from '../atoms/CardImage';
-import ResponsiveFontSizes from '../atoms/Typography';
-import Colors from '../atoms/Colors';
 import Button from '../atoms/Button';
+import LayoutContent from '../molecules/LayoutContent';
 
 function CommunityLayout({ title, description, imageUrl }) {
+  const theme = useTheme();
+  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
+
+  const flexDirection = isMobileOrTablet ? 'column' : 'row';
+  const paddingX = isMobileOrTablet ? 4 : 10;
+  const textAlign = isMobileOrTablet ? 'center' : 'left';
+  const marginBottom = isMobileOrTablet ? 2 : 0;
+  const marginTopBottom = isMobileOrTablet ? 2 : 4;
+
   return (
     <Box
       display="flex"
+      flexDirection={flexDirection}
       justifyContent="space-between"
       alignItems="center"
-      px={10}
+      px={paddingX}
       py={6}
+      textAlign={textAlign}
     >
-      <Box textAlign="justify" paddingRight={22}>
-        <ResponsiveFontSizes variant="h3" color={Colors.primary.soft} fontWeight="600">
-          {title}
-        </ResponsiveFontSizes>
-        <ResponsiveFontSizes variant="body1">
-          {description}
-        </ResponsiveFontSizes>
-        <Button size="large" py={1} my={2} fullWidth={false} fontWeight={600}>
+      <Box mb={marginBottom}>
+        <LayoutContent title={title} description={description} />
+        <Button size="large" py={1} my={marginTopBottom} fullWidth={false} fontWeight={600}>
           Join Now
         </Button>
       </Box>
