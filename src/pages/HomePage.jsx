@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import SplitLayout from '../components/molecules/SplitLayout';
+import HeroLayout from '../components/organisms/HeroLayout';
 import ItemCategory from '../components/organisms/ItemCategory';
 import SubContent from '../components/organisms/SubContent';
 import ItemPurpose from '../components/organisms/ItemPurpose';
@@ -22,7 +22,7 @@ function HomePage() {
 
   return (
     <section className="home-page">
-      <SplitLayout
+      <HeroLayout
         title="TRAVEL AND SAVE NATURE "
         description="Welcome to a new era of travel where adventure meets environmental stewardship.
         Your Gateway to Sustainable Exploration in Indonesia! Start your journey with us and traverse

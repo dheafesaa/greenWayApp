@@ -6,7 +6,9 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 function CardImage({ src, alt }) {
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
+
+  const width = isMobileOrTablet ? '100%' : '60%';
 
   return (
     <Box
@@ -14,7 +16,7 @@ function CardImage({ src, alt }) {
       src={src}
       alt={alt}
       sx={{
-        width: isMobile ? '100%' : 'auto',
+        width,
         height: 'auto',
       }}
     />
