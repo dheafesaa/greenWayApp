@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import HeroLayout from '../components/organisms/HeroLayout';
 import CategoryItem from '../components/organisms/CategoryItem';
 import ProductLayout from '../components/organisms/ProductLayout';
-import ItemPurpose from '../components/organisms/ItemPurpose';
+import PurposeCardList from '../components/organisms/PurposeCardList';
 import CampaignList from '../components/organisms/CampaignList';
 import Testimoni from '../components/organisms/Testimoni';
 import Videos from '../components/organisms/Videos';
@@ -25,6 +25,12 @@ function HomePage() {
     { title: '25', description: 'Articles' },
   ];
 
+  const purposeCards = [
+    { id: 1, title: 'Explore Destinations', description: 'Explore travel destination and share experience with exploler.' },
+    { id: 2, title: 'Sustainable Journeys', description: 'Discover our curated selection of campaign destinations.' },
+    { id: 3, title: 'Green Travel Actions', description: 'Learn about our initiatives for sustainable travel awareness.' },
+  ];
+
   const limitedCampaigns = campaigns.slice(0, 4);
 
   return (
@@ -44,7 +50,7 @@ function HomePage() {
         Indonesia in a more responsible, eco-conscious manner."
         imageUrl="/src/assets/subContent.png"
       />
-      <ItemPurpose />
+      <PurposeCardList purposeCards={purposeCards} />
       <CampaignList campaigns={limitedCampaigns} />
       <Testimoni />
       <Videos />

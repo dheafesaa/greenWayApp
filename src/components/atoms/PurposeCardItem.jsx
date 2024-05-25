@@ -1,16 +1,17 @@
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { useMediaQuery, useTheme } from '@mui/material';
 import ResponsiveFontSizes from './Typography';
 import Colors from './Colors';
 
-function CardItemPurpose({ title, description }) {
+function PurposeCardItem({ title, description }) {
+  const theme = useTheme();
+  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
-    <Card sx={{
-      maxWidth: 400, py: 2, background: Colors.secondary.hard, borderRadius: '16px',
-    }}
-    >
+    <Card sx={{ py: isTablet ? 4 : 6, background: Colors.secondary.hard, borderRadius: '16px' }}>
       <CardContent>
         <ResponsiveFontSizes variant="h4" fontWeight="600" color={Colors.white}>
           {title}
@@ -23,9 +24,16 @@ function CardItemPurpose({ title, description }) {
   );
 }
 
-CardItemPurpose.propTypes = {
+const purposeCardItemShape = {
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };
 
-export default CardItemPurpose;
+PurposeCardItem.propTypes = {
+  ...purposeCardItemShape,
+};
+
+export { purposeCardItemShape };
+
+export default PurposeCardItem;
