@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import CardWithText from '../atoms/CardWithText';
 import Colors from '../atoms/Colors';
 
-function ProductCategory({ productCards }) {
+function CategoryItem({ categoryCards }) {
   const theme = useTheme();
   const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -24,17 +24,17 @@ function ProductCategory({ productCards }) {
       sx={{ backgroundColor: Colors.secondary.hard }}
       mb={6}
     >
-      {productCards.map((productCard) => (
-        <Box key={productCard.title} flexBasis={getCardWidth()}>
-          <CardWithText title={productCard.title} description={productCard.description} />
+      {categoryCards.map((categoryCard) => (
+        <Box key={categoryCard.title} flexBasis={getCardWidth()}>
+          <CardWithText title={categoryCard.title} description={categoryCard.description} />
         </Box>
       ))}
     </Box>
   );
 }
 
-ProductCategory.propTypes = {
-  productCards: PropTypes.arrayOf(
+CategoryItem.propTypes = {
+  categoryCards: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
@@ -42,4 +42,4 @@ ProductCategory.propTypes = {
   ).isRequired,
 };
 
-export default ProductCategory;
+export default CategoryItem;
