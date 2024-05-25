@@ -22,6 +22,7 @@ function ProductCategory({ productCards }) {
       px={isMobileOrTablet ? 4 : 10}
       gap={isMobileOrTablet ? 4 : 0}
       sx={{ backgroundColor: Colors.secondary.hard }}
+      mb={6}
     >
       {productCards.map((productCard) => (
         <Box key={productCard.title} flexBasis={getCardWidth()}>
