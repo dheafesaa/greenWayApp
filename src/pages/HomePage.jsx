@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import HeroLayout from '../components/organisms/HeroLayout';
-import ItemCategory from '../components/organisms/ItemCategory';
+import ProductCategory from '../components/organisms/ProductCategory';
 import ProductLayout from '../components/organisms/ProductLayout';
 import ItemPurpose from '../components/organisms/ItemPurpose';
 import CampaignList from '../components/organisms/CampaignList';
@@ -18,6 +18,13 @@ function HomePage() {
     dispatch(asyncReceiveCampaigns());
   }, [dispatch]);
 
+  const productCards = [
+    { title: '14', description: 'Initiatives' },
+    { title: '52', description: 'Destinations' },
+    { title: '31', description: 'Campaigns' },
+    { title: '25', description: 'Articles' },
+  ];
+
   const limitedCampaigns = campaigns.slice(0, 4);
 
   return (
@@ -29,7 +36,7 @@ function HomePage() {
         Indonesia in a more responsible, eco-conscious manner."
         imageUrl="/src/assets/landing-1.png"
       />
-      <ItemCategory />
+      <ProductCategory productCards={productCards} />
       <ProductLayout
         title="Eco Friendly Travel For Better Future"
         description="Welcome to a new era of travel where adventure meets environmental stewardship.
