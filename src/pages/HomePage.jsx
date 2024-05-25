@@ -5,7 +5,7 @@ import CategoryItem from '../components/organisms/CategoryItem';
 import ProductLayout from '../components/organisms/ProductLayout';
 import PurposeCardList from '../components/organisms/PurposeCardList';
 import CampaignList from '../components/organisms/CampaignList';
-import Testimoni from '../components/organisms/Testimoni';
+import TestimoniCardList from '../components/organisms/TestimoniCardList';
 import Videos from '../components/organisms/Videos';
 import CommunityLayout from '../components/organisms/CommunityLayout';
 import { asyncReceiveCampaigns } from '../states/campaigns/action';
@@ -31,6 +31,51 @@ function HomePage() {
     { id: 3, title: 'Green Travel Actions', description: 'Learn about our initiatives for sustainable travel awareness.' },
   ];
 
+  const testimoniCards = [
+    {
+      id: 1,
+      avatarSrc: '/static/images/avatar/1.jpg',
+      name: 'Josephine Blanton',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sapien in mauris imperdiet molestie. Ut blandit lectus lacinia, cursus magna nec, euismod ex.',
+      job: 'Traveller',
+    },
+    {
+      id: 2,
+      avatarSrc: '/static/images/avatar/2.jpg',
+      name: 'John Doe',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sapien in mauris imperdiet molestie. Ut blandit lectus lacinia, cursus magna nec, euismod ex.',
+      job: 'Traveller',
+    },
+    {
+      id: 3,
+      avatarSrc: '/static/images/avatar/3.jpg',
+      name: 'Jane Smith',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sapien in mauris imperdiet molestie. Ut blandit lectus lacinia, cursus magna nec, euismod ex.',
+      job: 'Traveller',
+    },
+    {
+      id: 4,
+      avatarSrc: '/static/images/avatar/1.jpg',
+      name: 'Josephine Blanton',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sapien in mauris imperdiet molestie. Ut blandit lectus lacinia, cursus magna nec, euismod ex.',
+      job: 'Traveller',
+    },
+    {
+      id: 5,
+      avatarSrc: '/static/images/avatar/2.jpg',
+      name: 'John Doe',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sapien in mauris imperdiet molestie. Ut blandit lectus lacinia, cursus magna nec, euismod ex.',
+      job: 'Traveller',
+    },
+    {
+      id: 6,
+      avatarSrc: '/static/images/avatar/3.jpg',
+      name: 'Jane Smith',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sapien in mauris imperdiet molestie. Ut blandit lectus lacinia, cursus magna nec, euismod ex.',
+      job: 'Traveller',
+    },
+  ];
+
   const limitedCampaigns = campaigns.slice(0, 4);
 
   return (
@@ -52,7 +97,7 @@ function HomePage() {
       />
       <PurposeCardList purposeCards={purposeCards} />
       <CampaignList campaigns={limitedCampaigns} />
-      <Testimoni />
+      <TestimoniCardList testimoniCards={testimoniCards} />
       <Videos />
       <CommunityLayout
         title="Community Is Calling, No Need to Stalling"
