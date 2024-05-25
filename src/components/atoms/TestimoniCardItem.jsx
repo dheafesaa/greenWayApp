@@ -12,10 +12,20 @@ function TestimoniCardItem({
   avatarSrc, name, bio, job,
 }) {
   const muiTheme = useTheme();
-  const isMobileOrTablet = useMediaQuery(muiTheme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'));
+  const isTablet = useMediaQuery(muiTheme.breakpoints.down('lg'));
+
+  let flexBasis;
+  if (isMobile) {
+    flexBasis = '100%';
+  } else if (isTablet) {
+    flexBasis = 'calc(50% - 16px)';
+  } else {
+    flexBasis = 'calc(33.33% - 16px)';
+  }
 
   return (
-    <Box flexBasis={isMobileOrTablet ? '100%' : 'calc(33.33% - 16px)'}>
+    <Box flexBasis={flexBasis} mb={isMobile ? 0 : 4}>
       <Card sx={{ border: `2px solid ${Colors.secondary.hard}` }}>
         <CardContent>
           <Avatar src={avatarSrc} sx={{ '--Avatar-size': '4rem' }} />

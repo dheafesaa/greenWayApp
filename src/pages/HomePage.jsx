@@ -96,9 +96,9 @@ function HomePage() {
         imageUrl="/src/assets/subContent.png"
       />
       <PurposeCardList purposeCards={purposeCards} />
-      {/* <CampaignList campaigns={limitedCampaigns} /> */}
+      <CampaignList campaigns={limitedCampaigns} />
       <TestimoniCardList testimoniCards={testimoniCards} />
-      {/* <Videos /> */}
+      <Videos />
       <CommunityLayout
         title="Community Is Calling, No Need to Stalling"
         description="Join our discussion community! Discover new ideas and exchange experience
