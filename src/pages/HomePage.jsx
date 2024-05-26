@@ -6,8 +6,8 @@ import ProductLayout from '../components/organisms/ProductLayout';
 import PurposeCardList from '../components/organisms/PurposeCardList';
 import CampaignCardList from '../components/organisms/CampaignCardList';
 import TestimoniCardList from '../components/organisms/TestimoniCardList';
-import Videos from '../components/organisms/Videos';
 import CommunityLayout from '../components/organisms/CommunityLayout';
+import VideoSection from '../components/organisms/VideoSection';
 import { asyncReceiveCampaigns } from '../states/campaigns/action';
 
 function HomePage() {
@@ -98,7 +98,10 @@ function HomePage() {
       <PurposeCardList purposeCards={purposeCards} />
       <CampaignCardList campaignCards={limitedCampaigns} />
       <TestimoniCardList testimoniCards={testimoniCards} />
-      <Videos />
+      <VideoSection
+        src="/src/assets/Wonderful Indonesia - Nature.mp4"
+        alt="Wonderful Indonesia"
+      />
       <CommunityLayout
         title="Community Is Calling, No Need to Stalling"
         description="Join our discussion community! Discover new ideas and exchange experience
