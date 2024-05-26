@@ -26,7 +26,7 @@ function TestimoniCardItem({
 
   return (
     <Box flexBasis={flexBasis} mb={isMobile ? 0 : 4}>
-      <Card sx={{ border: `2px solid ${Colors.secondary.hard}` }}>
+      <Card sx={{ border: `2px solid ${Colors.secondary.hard}`, borderRadius: '16px' }}>
         <CardContent>
           <Avatar src={avatarSrc} sx={{ '--Avatar-size': '4rem' }} />
           <ResponsiveFontSizes variant="body1" sx={{ py: 2 }}>{bio}</ResponsiveFontSizes>
