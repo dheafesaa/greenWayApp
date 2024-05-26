@@ -4,7 +4,7 @@ import HeroLayout from '../components/organisms/HeroLayout';
 import CategoryItem from '../components/organisms/CategoryItem';
 import ProductLayout from '../components/organisms/ProductLayout';
 import PurposeCardList from '../components/organisms/PurposeCardList';
-import CampaignList from '../components/organisms/CampaignList';
+import CampaignCardList from '../components/organisms/CampaignCardList';
 import TestimoniCardList from '../components/organisms/TestimoniCardList';
 import Videos from '../components/organisms/Videos';
 import CommunityLayout from '../components/organisms/CommunityLayout';
@@ -96,7 +96,7 @@ function HomePage() {
         imageUrl="/src/assets/subContent.png"
       />
       <PurposeCardList purposeCards={purposeCards} />
-      <CampaignList campaigns={limitedCampaigns} />
+      <CampaignCardList campaignCards={limitedCampaigns} />
       <TestimoniCardList testimoniCards={testimoniCards} />
       <Videos />
       <CommunityLayout
