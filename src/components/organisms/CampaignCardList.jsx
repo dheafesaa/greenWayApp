@@ -5,6 +5,7 @@ import Box from '@mui/joy/Box';
 import { CssVarsProvider, extendTheme } from '@mui/joy/styles';
 import CampaignCardItem, { campaignCardItemShape } from '../atoms/CampaignCardItem';
 import Title from '../atoms/Title';
+import SeeAllButton from '../atoms/SeeAllButton';
 
 const theme = extendTheme();
 
@@ -16,6 +17,7 @@ function CampaignCardList({ campaignCards }) {
     <CssVarsProvider theme={theme}>
       <Box py={6} px={isMobileOrTablet ? 4 : 10}>
         <Title title="Campaign" />
+        <SeeAllButton to="/campaigns" />
         <Box
           display="flex"
           flexWrap="wrap"
