@@ -9,7 +9,7 @@ import ResponsiveFontSizes from './Typography';
 import Colors from './Colors';
 
 function TestimoniCardItem({
-  avatarSrc, name, bio, job,
+  photo, name, review, job,
 }) {
   const muiTheme = useTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'));
@@ -28,8 +28,8 @@ function TestimoniCardItem({
     <Box flexBasis={flexBasis} mb={isMobile ? 0 : 4}>
       <Card sx={{ border: `2px solid ${Colors.secondary.hard}`, borderRadius: '16px' }}>
         <CardContent>
-          <Avatar src={avatarSrc} sx={{ '--Avatar-size': '4rem' }} />
-          <ResponsiveFontSizes variant="body1" sx={{ py: 2 }}>{bio}</ResponsiveFontSizes>
+          <Avatar src={photo} sx={{ '--Avatar-size': '4rem' }} />
+          <ResponsiveFontSizes variant="body1" sx={{ py: 2 }}>{review}</ResponsiveFontSizes>
           <Box>
             <ResponsiveFontSizes variant="body1" fontWeight="600">{name}</ResponsiveFontSizes>
             <ResponsiveFontSizes variant="body1">{job}</ResponsiveFontSizes>
@@ -42,9 +42,9 @@ function TestimoniCardItem({
 
 const testimoniCardItemShape = {
   id: PropTypes.number.isRequired,
-  avatarSrc: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  bio: PropTypes.string.isRequired,
+  review: PropTypes.string.isRequired,
   job: PropTypes.string.isRequired,
 };
 
