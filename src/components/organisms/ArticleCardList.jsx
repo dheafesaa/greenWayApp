@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, useMediaQuery, useTheme } from '@mui/material';
 import Title from '../atoms/Title';
-import SeeAllButton from '../atoms/SeeAllButton';
 import ArticleCardItem, { articleCardItemShape } from '../atoms/ArticleCardItem';
 
 function ArticleCardList({ articleCards }) {
@@ -12,7 +11,6 @@ function ArticleCardList({ articleCards }) {
   return (
     <Box py={6} px={isMobileOrTablet ? 4 : 10}>
       <Title title="Read Insightful Articles in Your Free Time" />
-      <SeeAllButton to="/article" />
       <Box
         display="flex"
         flexWrap="wrap"

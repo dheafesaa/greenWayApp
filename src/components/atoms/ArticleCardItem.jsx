@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Box, CardActionArea, useTheme, useMediaQuery,
@@ -8,7 +9,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import ResponsiveFontSizes from './Typography';
 
-function ArticleCardItem({ imageUrl, title }) {
+function ArticleCardItem({ picture, title, link }) {
   const muiTheme = useTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'));
   const isTablet = useMediaQuery(muiTheme.breakpoints.down('lg'));
@@ -23,17 +24,29 @@ function ArticleCardItem({ imageUrl, title }) {
   }
 
   return (
-    <Box flexBasis={flexBasis} mb={isMobile ? 0 : 4}>
-      <Card sx={{ maxWidth: 345 }}>
+    <Box flexBasis={flexBasis} mb={isMobile ? 0 : 4} component={Link} to={link}>
+      <Card sx={{ borderRadius: '16px' }}>
         <CardActionArea>
           <CardMedia
             component="img"
-            height="140"
-            image={imageUrl}
-            alt={imageUrl}
+            height="200"
+            image={picture}
+            alt={title}
           />
           <CardContent>
-            <ResponsiveFontSizes variant="body1" fontWeight="600">
+            <ResponsiveFontSizes
+              variant="body1"
+              fontWeight="600"
+              sx={{
+                display: '-webkit-box',
+                '-webkit-box-orient': 'vertical',
+                WebkitLineClamp: 1,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'normal',
+                mb: 0,
+              }}
+            >
               {title}
             </ResponsiveFontSizes>
           </CardContent>
@@ -45,8 +58,9 @@ function ArticleCardItem({ imageUrl, title }) {
 
 const articleCardItemShape = {
   id: PropTypes.string.isRequired,
-  imageUrl: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
 };
 
 ArticleCardItem.propTypes = {
