@@ -21,7 +21,7 @@ function Title({ title }) {
 }
 
 Title.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
 };
 
 export default Title;
