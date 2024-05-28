@@ -28,7 +28,7 @@ function HamburgerMenu({ authUser, signOut }) {
   };
 
   const menuItems = [
-    { label: 'Home', path: '/homepage' },
+    { label: 'Home', path: '/' },
     { label: 'Article', path: '/article' },
     { label: 'Destination', path: '/destination' },
     { label: 'About Us', path: '/about' },
