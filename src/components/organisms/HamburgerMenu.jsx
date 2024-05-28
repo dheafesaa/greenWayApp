@@ -109,7 +109,7 @@ function HamburgerMenu({ authUser, signOut }) {
                   Sign Out
                 </Button>
               ) : (
-                <Button size="large" py={0.5} fullWidth={false} fontWeight={600}>Login</Button>
+                <Button to="/login" size="large" py={0.5} fullWidth={false} fontWeight={600}>Login</Button>
               )}
             </>
           )}
