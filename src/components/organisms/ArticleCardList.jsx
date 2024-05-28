@@ -12,7 +12,7 @@ function ArticleCardList({ articleCards }) {
   return (
     <Box py={6} px={isMobileOrTablet ? 4 : 10}>
       <Title title="Read Insightful Articles in Your Free Time" />
-      <SeeAllButton to="/articles" />
+      <SeeAllButton to="/article" />
       <Box
         display="flex"
         flexWrap="wrap"
