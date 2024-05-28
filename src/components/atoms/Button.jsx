@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import ButtonMUI from '@mui/material/Button';
 import Colors from './Colors';
 
 function Button({
-  variant, size, type, onClick, py, my, fontWeight, fullWidth, children,
+  to, variant, size, type, onClick, py, my, fontWeight, fullWidth, children,
 }) {
   return (
     <ButtonMUI
+      component={Link}
+      to={to}
       variant={variant}
       size={size}
       type={type}
@@ -31,6 +34,7 @@ function Button({
 }
 
 Button.propTypes = {
+  to: PropTypes.string.isRequired,
   variant: PropTypes.oneOf(['contained', 'outlined', 'text']),
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   type: PropTypes.oneOf(['button', 'submit']),

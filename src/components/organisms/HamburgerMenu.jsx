@@ -28,7 +28,7 @@ function HamburgerMenu({ authUser, signOut }) {
   };
 
   const menuItems = [
-    { label: 'Home', path: '/homepage' },
+    { label: 'Home', path: '/' },
     { label: 'Article', path: '/article' },
     { label: 'Destination', path: '/destination' },
     { label: 'About Us', path: '/about' },
@@ -109,7 +109,7 @@ function HamburgerMenu({ authUser, signOut }) {
                   Sign Out
                 </Button>
               ) : (
-                <Button size="large" py={0.5} fullWidth={false} fontWeight={600}>Login</Button>
+                <Button to="/login" size="large" py={0.5} fullWidth={false} fontWeight={600}>Login</Button>
               )}
             </>
           )}
