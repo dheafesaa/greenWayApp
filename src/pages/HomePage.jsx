@@ -8,14 +8,15 @@ import CampaignCardList from '../components/organisms/CampaignCardList';
 import TestimoniCardList from '../components/organisms/TestimoniCardList';
 import CommunityLayout from '../components/organisms/CommunityLayout';
 import VideoSection from '../components/organisms/VideoSection';
-import { asyncReceiveCampaigns } from '../states/campaigns/action';
+import { asyncPopulateCampaignsAndReviews } from '../states/shared/action';
 
 function HomePage() {
   const dispatch = useDispatch();
   const campaigns = useSelector((state) => state?.campaigns || []);
+  const reviews = useSelector((state) => state.reviews || []);
 
   useEffect(() => {
-    dispatch(asyncReceiveCampaigns());
+    dispatch(asyncPopulateCampaignsAndReviews());
   }, [dispatch]);
 
   const categoryCards = [
@@ -29,51 +30,6 @@ function HomePage() {
     { id: 1, title: 'Explore Destinations', description: 'Explore travel destination and share experience with exploler.' },
     { id: 2, title: 'Sustainable Journeys', description: 'Discover our curated selection of campaign destinations.' },
     { id: 3, title: 'Green Travel Actions', description: 'Learn about our initiatives for sustainable travel awareness.' },
-  ];
-
-  const testimoniCards = [
-    {
-      id: 1,
-      avatarSrc: '/static/images/avatar/1.jpg',
-      name: 'Josephine Blanton',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sapien in mauris imperdiet molestie. Ut blandit lectus lacinia, cursus magna nec, euismod ex.',
-      job: 'Traveller',
-    },
-    {
-      id: 2,
-      avatarSrc: '/static/images/avatar/2.jpg',
-      name: 'John Doe',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sapien in mauris imperdiet molestie. Ut blandit lectus lacinia, cursus magna nec, euismod ex.',
-      job: 'Traveller',
-    },
-    {
-      id: 3,
-      avatarSrc: '/static/images/avatar/3.jpg',
-      name: 'Jane Smith',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sapien in mauris imperdiet molestie. Ut blandit lectus lacinia, cursus magna nec, euismod ex.',
-      job: 'Traveller',
-    },
-    {
-      id: 4,
-      avatarSrc: '/static/images/avatar/1.jpg',
-      name: 'Josephine Blanton',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sapien in mauris imperdiet molestie. Ut blandit lectus lacinia, cursus magna nec, euismod ex.',
-      job: 'Traveller',
-    },
-    {
-      id: 5,
-      avatarSrc: '/static/images/avatar/2.jpg',
-      name: 'John Doe',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sapien in mauris imperdiet molestie. Ut blandit lectus lacinia, cursus magna nec, euismod ex.',
-      job: 'Traveller',
-    },
-    {
-      id: 6,
-      avatarSrc: '/static/images/avatar/3.jpg',
-      name: 'Jane Smith',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at sapien in mauris imperdiet molestie. Ut blandit lectus lacinia, cursus magna nec, euismod ex.',
-      job: 'Traveller',
-    },
   ];
 
   const limitedCampaigns = campaigns.slice(0, 4);
@@ -97,7 +53,7 @@ function HomePage() {
       />
       <PurposeCardList purposeCards={purposeCards} />
       <CampaignCardList campaignCards={limitedCampaigns} />
-      <TestimoniCardList testimoniCards={testimoniCards} />
+      <TestimoniCardList testimoniCards={reviews} />
       <VideoSection
         src="/src/assets/Wonderful Indonesia - Nature.mp4"
         alt="Wonderful Indonesia"

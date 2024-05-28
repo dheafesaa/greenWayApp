@@ -106,6 +106,22 @@ const api = (() => {
     return campaigns;
   }
 
+  async function getAllReviews() {
+    const response = await fetch(`${BASE_URL}/reviews`);
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: { reviews } } = responseJson;
+
+    return reviews;
+  }
+
   return {
     putAccessToken,
     getAccessToken,
@@ -113,6 +129,7 @@ const api = (() => {
     login,
     getOwnProfile,
     getAllCampaigns,
+    getAllReviews,
   };
 })();
 

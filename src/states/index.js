@@ -4,6 +4,7 @@ import authUserReducer from './authUser/reducer';
 import isPreloadReducer from './isPreload/reducer';
 import usersReducer from './users/reducer';
 import campaignsReducer from './campaigns/reducer';
+import reviewsReducer from './reviews/reducer';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     users: usersReducer,
     campaigns: campaignsReducer,
     loadingBar: loadingBarReducer,
+    reviews: reviewsReducer,
   },
 });
 
