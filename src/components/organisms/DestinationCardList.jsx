@@ -4,7 +4,6 @@ import { Box, useTheme, useMediaQuery } from '@mui/material';
 import Title from '../atoms/Title';
 import Subtitle from '../atoms/Subtitle';
 import Search from '../atoms/Search';
-import SeeAllButton from '../atoms/SeeAllButton';
 import DestinationCardItem, { destinationCardItemShape } from '../atoms/DestinationCardItem';
 
 function DestinationCardList({ destinationCards }) {
@@ -37,7 +36,6 @@ function DestinationCardList({ destinationCards }) {
       <Box mb={6}>
         <Search />
       </Box>
-      <SeeAllButton to="/destination" />
       <Box
         display="grid"
         gridTemplateColumns={gridTemplateColumns}
