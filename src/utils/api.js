@@ -138,6 +138,22 @@ const api = (() => {
     return articles;
   }
 
+  async function getAllDestinations() {
+    const response = await fetch(`${BASE_URL}/destinations`);
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data } = responseJson;
+
+    return data;
+  }
+
   return {
     putAccessToken,
     getAccessToken,
@@ -147,6 +163,7 @@ const api = (() => {
     getAllCampaigns,
     getAllReviews,
     getAllArticles,
+    getAllDestinations,
   };
 })();
 

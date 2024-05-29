@@ -6,6 +6,7 @@ import usersReducer from './users/reducer';
 import campaignsReducer from './campaigns/reducer';
 import reviewsReducer from './reviews/reducer';
 import articlesReducer from './articles/reducer';
+import destinationsReducer from './destinations/reducer';
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     loadingBar: loadingBarReducer,
     reviews: reviewsReducer,
     articles: articlesReducer,
+    destinations: destinationsReducer,
   },
 });
 

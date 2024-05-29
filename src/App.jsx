@@ -9,6 +9,7 @@ import { asyncUnsetAuthUser } from './states/authUser/action';
 import HamburgerMenu from './components/organisms/HamburgerMenu';
 import Footer from './components/organisms/Footer';
 import ArticlePage from './pages/ArticlePage';
+import DestinationPage from './pages/DestinationPage';
 
 function App() {
   const authUser = useSelector((state) => state.authUser);
@@ -38,6 +39,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/article" element={<ArticlePage />} />
+          <Route path="/destination" element={<DestinationPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Routes>
