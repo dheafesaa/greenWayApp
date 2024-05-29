@@ -9,7 +9,7 @@ import ResponsiveFontSizes from './Typography';
 import Colors from './Colors';
 
 function TestimoniCardItem({
-  photo, name, review, job,
+  photo, name, review, occupation,
 }) {
   const muiTheme = useTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'));
@@ -32,7 +32,7 @@ function TestimoniCardItem({
           <ResponsiveFontSizes variant="body1" sx={{ py: 2 }}>{review}</ResponsiveFontSizes>
           <Box>
             <ResponsiveFontSizes variant="body1" fontWeight="600">{name}</ResponsiveFontSizes>
-            <ResponsiveFontSizes variant="body1">{job}</ResponsiveFontSizes>
+            <ResponsiveFontSizes variant="body1">{occupation}</ResponsiveFontSizes>
           </Box>
         </CardContent>
       </Card>
@@ -45,7 +45,7 @@ const testimoniCardItemShape = {
   photo: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   review: PropTypes.string.isRequired,
-  job: PropTypes.string.isRequired,
+  occupation: PropTypes.string.isRequired,
 };
 
 TestimoniCardItem.propTypes = {
