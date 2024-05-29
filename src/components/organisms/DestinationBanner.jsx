@@ -5,18 +5,17 @@ import {
 import Subtitle from '../atoms/Subtitle';
 import Title from '../atoms/Title';
 import Search from '../atoms/Search';
-import backgroundImage from '../../assets/imgBanner.png';
 
 function ExploreComponent() {
   const muiTheme = useTheme();
+  const isMobileOrTablet = useMediaQuery(muiTheme.breakpoints.down('md'));
   const isTabletOrDesktop = useMediaQuery(muiTheme.breakpoints.up('sm'));
 
   return (
     <Box
-      py={14}
-      px={10}
+      py={6}
+      px={isMobileOrTablet ? 4 : 10}
       sx={{
-        backgroundImage: `url(${backgroundImage})`,
         display: 'flex',
         justifyContent: 'center',
         flexDirection: 'column',

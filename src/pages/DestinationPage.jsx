@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Box } from '@mui/material';
 import DestinationCardList from '../components/organisms/DestinationCardList';
 import { asyncReceiveDestinations } from '../states/destinations/action';
-import DestinationBanner from '../components/organisms/DestinationBanner';
+// import DestinationBanner from '../components/organisms/DestinationBanner';
 
 function DestinationPage() {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ function DestinationPage() {
 
   return (
     <Box>
-      <DestinationBanner />
+      {/* <DestinationBanner /> */}
       <DestinationCardList destinationCards={destinations} />
     </Box>
   );
