@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, useTheme, useMediaQuery } from '@mui/material';
 import Title from '../atoms/Title';
-import SeeAllButton from '../atoms/SeeAllButton';
+import Subtitle from '../atoms/Subtitle';
+import Search from '../atoms/Search';
 import DestinationCardItem, { destinationCardItemShape } from '../atoms/DestinationCardItem';
 
 function DestinationCardList({ destinationCards }) {
   const muiTheme = useTheme();
   const isMobile = useMediaQuery(muiTheme.breakpoints.down('sm'));
   const isMobileOrTablet = useMediaQuery(muiTheme.breakpoints.down('md'));
+  const isTabletOrDesktop = useMediaQuery(muiTheme.breakpoints.up('sm'));
 
   let gridTemplateColumns;
   if (isMobile) {
@@ -21,8 +23,19 @@ function DestinationCardList({ destinationCards }) {
 
   return (
     <Box py={6} px={isMobileOrTablet ? 4 : 10}>
-      <Title title="Wonderful Destination" />
-      <SeeAllButton to="/destination" />
+      <Title title={(
+        <>
+          Find The Next Places to Explore
+          {' '}
+          {isTabletOrDesktop && <br />}
+          The Beauty of The Indonesia
+        </>
+        )}
+      />
+      <Subtitle subtitle="Your journey to find beautiful places starts here!" />
+      <Box mb={6}>
+        <Search />
+      </Box>
       <Box
         display="grid"
         gridTemplateColumns={gridTemplateColumns}
