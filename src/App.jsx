@@ -10,6 +10,7 @@ import HamburgerMenu from './components/organisms/HamburgerMenu';
 import Footer from './components/organisms/Footer';
 import ArticlePage from './pages/ArticlePage';
 import DestinationPage from './pages/DestinationPage';
+import AboutUsPage from './pages/AboutUsPage';
 
 function App() {
   const authUser = useSelector((state) => state.authUser);
@@ -40,6 +41,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/article" element={<ArticlePage />} />
           <Route path="/destination" element={<DestinationPage />} />
+          <Route path="/about" element={<AboutUsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
         </Routes>
