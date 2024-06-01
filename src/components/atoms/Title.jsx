@@ -4,7 +4,7 @@ import { useTheme, useMediaQuery } from '@mui/material';
 import ResponsiveFontSizes from './Typography';
 import Colors from './Colors';
 
-function Title({ title }) {
+function Title({ title, color }) {
   const muiTheme = useTheme();
   const isMobileOrTablet = useMediaQuery(muiTheme.breakpoints.down('md'));
 
@@ -12,7 +12,7 @@ function Title({ title }) {
     <ResponsiveFontSizes
       variant={isMobileOrTablet ? 'h4' : 'h3'}
       fontWeight="600"
-      color={Colors.primary.soft}
+      color={color}
       sx={{ marginBottom: 4, textAlign: 'center' }}
     >
       {title}
@@ -22,6 +22,11 @@ function Title({ title }) {
 
 Title.propTypes = {
   title: PropTypes.node.isRequired,
+  color: PropTypes.string,
+};
+
+Title.defaultProps = {
+  color: Colors.primary.soft,
 };
 
 export default Title;
