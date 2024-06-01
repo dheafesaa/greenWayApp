@@ -31,7 +31,7 @@ function HamburgerMenu({ authUser, signOut }) {
     { label: 'Home', path: '/' },
     { label: 'Article', path: '/article' },
     { label: 'Destination', path: '/destination' },
-    { label: 'About Us', path: '/about' },
+    { label: 'About Us', path: '/about-us' },
   ];
 
   return (

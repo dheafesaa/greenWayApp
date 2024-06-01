@@ -7,6 +7,7 @@ import campaignsReducer from './campaigns/reducer';
 import reviewsReducer from './reviews/reducer';
 import articlesReducer from './articles/reducer';
 import destinationsReducer from './destinations/reducer';
+import aboutUsReducer from './aboutUS/reducer';
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     reviews: reviewsReducer,
     articles: articlesReducer,
     destinations: destinationsReducer,
+    aboutUs: aboutUsReducer,
   },
 });
 
