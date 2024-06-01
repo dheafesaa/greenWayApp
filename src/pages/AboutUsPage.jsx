@@ -11,8 +11,6 @@ function AboutUsPage() {
     dispatch(asyncReceiveAboutUs());
   }, [dispatch]);
 
-  console.log({ aboutUs });
-
   return (
     <ProfileCardList profileCards={aboutUs} />
   );
