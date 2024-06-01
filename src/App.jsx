@@ -11,6 +11,7 @@ import Footer from './components/organisms/Footer';
 import ArticlePage from './pages/ArticlePage';
 import DestinationPage from './pages/DestinationPage';
 import AboutUsPage from './pages/AboutUsPage';
+import CampaignPage from './pages/CampaignPage';
 
 function App() {
   const authUser = useSelector((state) => state.authUser);
@@ -39,6 +40,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/campaign" element={<CampaignPage />} />
           <Route path="/article" element={<ArticlePage />} />
           <Route path="/destination" element={<DestinationPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
