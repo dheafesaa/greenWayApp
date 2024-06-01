@@ -45,7 +45,7 @@ function ProfileCardItem({
 }
 
 const profileCardItemShape = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   photo: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   role1: PropTypes.string.isRequired,
