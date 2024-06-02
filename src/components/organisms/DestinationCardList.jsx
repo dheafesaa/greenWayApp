@@ -32,7 +32,15 @@ function DestinationCardList({ destinationCards }) {
         </>
         )}
       />
-      <Subtitle subtitle="Your journey to find beautiful places starts here!" />
+      <Subtitle subtitle={(
+        <>
+          Discover your dream adventure here. Every corner of Indonesia&#39;s beauty awaits
+          {' '}
+          {isTabletOrDesktop && <br />}
+          you with unforgettable memories. With Greenway, explore it all now!
+        </>
+      )}
+      />
       <Box mb={6}>
         <Search />
       </Box>
