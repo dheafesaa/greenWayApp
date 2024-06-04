@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
@@ -7,7 +7,7 @@ import RegisterPage from './pages/RegisterPage';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncUnsetAuthUser } from './states/authUser/action';
 import HamburgerMenu from './components/organisms/HamburgerMenu';
-import Footer from './components/organisms/Footer';
+import Footer from './components/molecules/Footer';
 import ArticlePage from './pages/ArticlePage';
 import DestinationPage from './pages/DestinationPage';
 import AboutUsPage from './pages/AboutUsPage';
@@ -16,6 +16,7 @@ import CampaignPage from './pages/CampaignPage';
 function App() {
   const authUser = useSelector((state) => state.authUser);
   const isPreload = useSelector((state) => state.isPreload);
+  const location = useLocation();
 
   const dispatch = useDispatch();
 
@@ -31,15 +32,16 @@ function App() {
     return null;
   }
 
-  return (
+  const isLoginOrRegisterPage = location.pathname === '/login' || location.pathname === '/register';
 
+  return (
     <div className="app">
       <header>
-        <HamburgerMenu authUser={authUser} signOut={onSignOut} />
+        {!isLoginOrRegisterPage && <HamburgerMenu authUser={authUser} signOut={onSignOut} />}
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/*" element={<HomePage />} />
           <Route path="/campaign" element={<CampaignPage />} />
           <Route path="/article" element={<ArticlePage />} />
           <Route path="/destination" element={<DestinationPage />} />
@@ -49,7 +51,7 @@ function App() {
         </Routes>
       </main>
       <footer>
-        <Footer />
+        {!isLoginOrRegisterPage && <Footer />}
       </footer>
     </div>
   );

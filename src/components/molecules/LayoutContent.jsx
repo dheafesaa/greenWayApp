@@ -1,29 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, useMediaQuery, useTheme } from '@mui/material';
-import ResponsiveFontSizes from '../atoms/Typography';
-import Colors from '../atoms/Colors';
+import { Box, Typography } from '@mui/material';
 
 function LayoutContent({ title, description }) {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
-  const width = isMobile ? '100%' : '90%';
-  const headingVariant = isMobile ? 'h4' : 'h3';
-
   return (
-    <Box width={width}>
-      <ResponsiveFontSizes variant={headingVariant} color={Colors.primary.soft} fontWeight="600">
-        {title}
-      </ResponsiveFontSizes>
-      <ResponsiveFontSizes
+    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Typography variant="h2">{title}</Typography>
+      <Typography
         variant="body1"
         sx={{
-          textAlign: 'justify',
+          textAlign: { xs: 'center', md: 'justify' },
         }}
       >
         {description}
-      </ResponsiveFontSizes>
+      </Typography>
     </Box>
   );
 }

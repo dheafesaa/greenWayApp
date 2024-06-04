@@ -1,25 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import { Card, CardMedia } from '@mui/material';
 
 function CardImage({ src, alt }) {
-  const theme = useTheme();
-  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
-
-  const width = isMobileOrTablet ? '100%' : '50%';
-
   return (
-    <Box
-      component="img"
-      src={src}
-      alt={alt}
+    <Card
       sx={{
-        width,
-        height: 'auto',
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
+        width: '100%',
+        height: '100%',
       }}
-    />
+    >
+      <CardMedia
+        component="img"
+        src={src}
+        alt={alt}
+      />
+    </Card>
   );
 }
 

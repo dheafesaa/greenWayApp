@@ -1,30 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, useMediaQuery, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import CardImage from '../atoms/CardImage';
 import LayoutContent from '../molecules/LayoutContent';
 
 function ProductLayout({ title, description, imageUrl }) {
-  const theme = useTheme();
-  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
-
-  const flexDirection = isMobileOrTablet ? 'column' : 'row';
-  const paddingX = isMobileOrTablet ? 4 : 10;
-  const textAlign = isMobileOrTablet ? 'center' : 'left';
-  const marginTop = isMobileOrTablet ? 4 : 0;
-
   return (
     <Box
       display="flex"
-      flexDirection={flexDirection}
-      justifyContent="space-between"
       alignItems="center"
-      px={paddingX}
-      py={6}
-      textAlign={textAlign}
+      textAlign={{ xs: 'center', md: 'left' }}
+      flexDirection={{ xs: 'column', md: 'row' }}
+      gap={6}
     >
-      <CardImage src={imageUrl} />
-      <Box display="flex" justifyContent="end" mt={marginTop}>
+      <Box flex={{ xs: '1 1 100%', md: '1 1 50%' }}>
+        <CardImage src={imageUrl} alt={imageUrl} />
+      </Box>
+      <Box flex={{ xs: '1 1 100%', md: '1 1 50%' }}>
         <LayoutContent title={title} description={description} />
       </Box>
     </Box>

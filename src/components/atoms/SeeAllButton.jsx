@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Link } from 'react-router-dom';
-import ResponsiveFontSizes from './Typography';
-import Colors from './Colors';
 
 function SeeAllButton({ to }) {
   return (
@@ -17,9 +15,9 @@ function SeeAllButton({ to }) {
       mb={2}
       sx={{ cursor: 'pointer', textDecoration: 'none' }}
     >
-      <ResponsiveFontSizes variant="h6" fontWeight="600" color={Colors.primary.soft} sx={{ mb: 0 }}>
+      <Typography variant="body1" sx={{ mb: 0 }}>
         see all
-      </ResponsiveFontSizes>
+      </Typography>
       <ArrowForwardIosIcon sx={{ fontSize: 18 }} />
     </Box>
   );

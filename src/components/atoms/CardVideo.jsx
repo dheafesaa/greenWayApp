@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
+import { Card } from '@mui/material';
 
 function CardVideo({ src, alt }) {
   return (
-    <Box
+    <Card
       component="video"
       autoPlay
       loop
@@ -12,6 +12,8 @@ function CardVideo({ src, alt }) {
       src={src}
       alt={alt}
       sx={{
+        backgroundColor: 'transparent',
+        boxShadow: 'none',
         width: '100%',
         height: '100%',
         borderRadius: '16px',
