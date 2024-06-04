@@ -2,23 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { useMediaQuery, useTheme } from '@mui/material';
-import ResponsiveFontSizes from './Typography';
-import Colors from './Colors';
+import { Typography } from '@mui/material';
+import Colors from '../atoms/Colors';
 
 function PurposeCardItem({ title, description }) {
-  const theme = useTheme();
-  const isTablet = useMediaQuery(theme.breakpoints.down('md'));
-
   return (
-    <Card sx={{ py: isTablet ? 4 : 6, background: Colors.secondary.hard, borderRadius: '16px' }}>
+    <Card sx={{
+      paddingY: 4, background: Colors.secondary.hard, borderRadius: '16px', height: '100%',
+    }}
+    >
       <CardContent>
-        <ResponsiveFontSizes variant="h4" fontWeight="600" color={Colors.white}>
+        <Typography variant="h4" sx={{ color: Colors.white }}>
           {title}
-        </ResponsiveFontSizes>
-        <ResponsiveFontSizes variant="body1" color={Colors.white}>
+        </Typography>
+        <Typography variant="body1" sx={{ color: Colors.white }}>
           {description}
-        </ResponsiveFontSizes>
+        </Typography>
       </CardContent>
     </Card>
   );

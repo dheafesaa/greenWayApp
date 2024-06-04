@@ -1,32 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTheme, useMediaQuery } from '@mui/material';
-import ResponsiveFontSizes from './Typography';
-import Colors from './Colors';
+import { Typography } from '@mui/material';
 
-function Title({ title, color }) {
-  const muiTheme = useTheme();
-  const isMobileOrTablet = useMediaQuery(muiTheme.breakpoints.down('md'));
-
+function Title({ title }) {
   return (
-    <ResponsiveFontSizes
-      variant={isMobileOrTablet ? 'h4' : 'h3'}
-      fontWeight="600"
-      color={color}
-      sx={{ marginBottom: 4, textAlign: 'center' }}
+    <Typography
+      variant="h2"
+      sx={{ textAlign: 'center' }}
     >
       {title}
-    </ResponsiveFontSizes>
+    </Typography>
   );
 }
 
 Title.propTypes = {
   title: PropTypes.node.isRequired,
-  color: PropTypes.string,
-};
-
-Title.defaultProps = {
-  color: Colors.primary.soft,
 };
 
 export default Title;

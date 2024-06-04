@@ -1,34 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, useTheme, useMediaQuery } from '@mui/material';
-import CampaignCardItem, { campaignCardItemShape } from '../atoms/CampaignCardItem';
+import { Box, Grid } from '@mui/material';
+import CampaignCardItem, { campaignCardItemShape } from '../molecules/CampaignCardItem';
 
 function CampaignCardList({ campaignCards }) {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
-
-  let gridTemplateColumns;
-  if (isMobile) {
-    gridTemplateColumns = '1fr';
-  } else if (isMobileOrTablet) {
-    gridTemplateColumns = '1fr 1fr';
-  } else {
-    gridTemplateColumns = 'repeat(4, 1fr)';
-  }
-
   return (
-    <Box
-      display="grid"
-      gridTemplateColumns={gridTemplateColumns}
-      gap={isMobileOrTablet ? 4 : 3}
-    >
-      {campaignCards.map((campaignCard) => (
-        <CampaignCardItem
-          key={campaignCard.id}
-          {...campaignCard}
-        />
-      ))}
+    <Box sx={{ flexGrow: 1, py: 4 }}>
+      <Grid container spacing={4}>
+        {campaignCards.map((campaignCard) => (
+          <Grid item xs={12} sm={6} md={3} key={campaignCard.id}>
+            <CampaignCardItem {...campaignCard} />
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 }

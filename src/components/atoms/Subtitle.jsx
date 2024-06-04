@@ -1,20 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ResponsiveFontSizes from './Typography';
+import { Typography } from '@mui/material';
 
-function Subtitle({ subtitle }) {
+function Subtitle({ subtitle, color }) {
   return (
-    <ResponsiveFontSizes
+    <Typography
       variant="body1"
-      sx={{ marginBottom: 6, textAlign: 'center' }}
+      color={color}
+      sx={{ textAlign: 'center' }}
     >
       {subtitle}
-    </ResponsiveFontSizes>
+    </Typography>
   );
 }
 
 Subtitle.propTypes = {
   subtitle: PropTypes.node.isRequired,
+  color: PropTypes.string,
+};
+
+Subtitle.defaultProps = {
+  color: '',
 };
 
 export default Subtitle;

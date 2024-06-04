@@ -1,36 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, useMediaQuery, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import CardImage from '../atoms/CardImage';
 import HeroContent from '../molecules/HeroContent';
 import Button from '../atoms/Button';
 
 function HeroLayout({ title, description, imageUrl }) {
-  const theme = useTheme();
-  const isMobileOrTablet = useMediaQuery(theme.breakpoints.down('md'));
-
-  const flexDirection = isMobileOrTablet ? 'column' : 'row';
-  const padding = isMobileOrTablet ? 4 : 10;
-  const textAlign = isMobileOrTablet ? 'center' : 'left';
-  const marginBottom = isMobileOrTablet ? 2 : 0;
-  const marginTopBottom = isMobileOrTablet ? 2 : 4;
-
   return (
     <Box
       display="flex"
-      flexDirection={flexDirection}
-      justifyContent="space-between"
       alignItems="center"
-      px={padding}
-      textAlign={textAlign}
+      textAlign={{ xs: 'center', md: 'left' }}
+      flexDirection={{ xs: 'column', md: 'row' }}
+      gap={10}
     >
-      <Box mb={marginBottom}>
+      <Box flex={{ xs: '1 1 100%', md: '1 1 50%' }}>
         <HeroContent title={title} description={description} />
-        <Button size="large" py={1} my={marginTopBottom} fullWidth={false} fontWeight={600}>
+        <Button size="large" py={1} my={{ xs: 2, md: 4 }} fontWeight={600}>
           Go Travel
         </Button>
       </Box>
-      <CardImage src={imageUrl} />
+      <Box flex={{ xs: '1 1 100%', md: '1 1 50%' }}>
+        <CardImage src={imageUrl} alt={imageUrl} />
+      </Box>
     </Box>
   );
 }

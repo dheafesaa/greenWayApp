@@ -54,7 +54,7 @@ Button.defaultProps = {
   fontWeight: 500,
   py: 1.7,
   my: 1,
-  fullWidth: true,
+  fullWidth: false,
 };
 
 export default Button;

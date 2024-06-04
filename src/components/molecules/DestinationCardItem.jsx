@@ -1,21 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Box, Card, CardMedia, CardContent,
-} from '@mui/material';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
-import Colors from './Colors';
-import ResponsiveFontSizes from './Typography';
+import { Box, Typography } from '@mui/material';
+import Colors from '../atoms/Colors';
 
-function CampaignCardItem({ picture, name, location }) {
+function DestinationCardItem({ photo, name, location }) {
   return (
-    <Card
-      sx={{ borderRadius: '16px', minHeight: '250px', position: 'relative' }}
-    >
+    <Card sx={{ borderRadius: '16px', minHeight: '210px', position: 'relative' }}>
       <CardMedia
         component="img"
-        height="250"
-        image={picture}
+        height="210"
+        image={photo}
         alt={name}
         sx={{
           position: 'absolute',
@@ -33,46 +31,45 @@ function CampaignCardItem({ picture, name, location }) {
             'linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)',
         }}
       />
-      <CardContent
-        sx={{
-          position: 'relative',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          height: '100%',
-        }}
+      <CardContent sx={{
+        position: 'absolute',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-end',
+        height: '100%',
+      }}
       >
-        <ResponsiveFontSizes
+        <Typography
           variant="body1"
           color={Colors.white}
           fontWeight="600"
         >
           {name}
-        </ResponsiveFontSizes>
-        <ResponsiveFontSizes
-          variant="subtitle1"
+        </Typography>
+        <Typography
+          variant="body2"
           color={Colors.white}
           sx={{ display: 'flex', alignItems: 'center' }}
         >
           <LocationOnRoundedIcon sx={{ marginRight: '4px' }} />
           {location}
-        </ResponsiveFontSizes>
+        </Typography>
       </CardContent>
     </Card>
   );
 }
 
-const campaignCardItemShape = {
+const destinationCardItemShape = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   location: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
+  photo: PropTypes.string.isRequired,
 };
 
-CampaignCardItem.propTypes = {
-  ...campaignCardItemShape,
+DestinationCardItem.propTypes = {
+  ...destinationCardItemShape,
 };
 
-export { campaignCardItemShape };
+export { destinationCardItemShape };
 
-export default CampaignCardItem;
+export default DestinationCardItem;

@@ -10,8 +10,8 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Typography } from '@mui/material';
 import Button from '../atoms/Button';
-import ResponsiveFontSizes from '../atoms/Typography';
 import Colors from '../atoms/Colors';
 
 function HamburgerMenu({ authUser, signOut }) {
@@ -38,19 +38,19 @@ function HamburgerMenu({ authUser, signOut }) {
     <Box sx={{ flexGrow: 1, marginBottom: 7 }}>
       <AppBar position="fixed" sx={{ background: Colors.secondary.soft, boxShadow: 'none' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <ResponsiveFontSizes variant="h4" fontWeight="600">
+          <Typography variant="h4" fontWeight="600">
             <span style={{ color: Colors.secondary.hard }}>Green</span>
             <span style={{ color: '#000' }}>Way</span>
-          </ResponsiveFontSizes>
+          </Typography>
           {isMobile ? (
             <>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
                 {authUser ? (
-                  <Button size="large" py={0.5} onClick={signOut} fullWidth={false} fontWeight={600}>
+                  <Button size="large" py={0.5} onClick={signOut} fontWeight={600}>
                     Sign Out
                   </Button>
                 ) : (
-                  <Button size="large" py={0.5} fullWidth={false} fontWeight={600}>Login</Button>
+                  <Button size="large" py={0.5} fontWeight={600}>Login</Button>
                 )}
                 <IconButton
                   edge="start"
@@ -98,18 +98,18 @@ function HamburgerMenu({ authUser, signOut }) {
                     to={item.path}
                     style={{ textDecoration: 'none', color: 'black', margin: '0 10px' }}
                   >
-                    <ResponsiveFontSizes variant="subtitle1" color={Colors.primary.soft} fontWeight="600">
+                    <Typography variant="subtitle1" color={Colors.primary.soft} fontWeight="600">
                       {item.label}
-                    </ResponsiveFontSizes>
+                    </Typography>
                   </Link>
                 ))}
               </Box>
               {authUser ? (
-                <Button size="large" py={0.5} onClick={signOut} fullWidth={false} fontWeight={600}>
+                <Button py={0.5} onClick={signOut} fontWeight={600}>
                   Sign Out
                 </Button>
               ) : (
-                <Button to="/login" size="large" py={0.5} fullWidth={false} fontWeight={600}>Login</Button>
+                <Button to="/login" py={0.5} fontWeight={600}>Login</Button>
               )}
             </>
           )}
