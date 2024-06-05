@@ -12,6 +12,7 @@ import ArticlePage from './pages/ArticlePage';
 import DestinationPage from './pages/DestinationPage';
 import AboutUsPage from './pages/AboutUsPage';
 import CampaignPage from './pages/CampaignPage';
+import DetailCampaignPage from './pages/DetailCampaignPage';
 
 function App() {
   const authUser = useSelector((state) => state.authUser);
@@ -43,6 +44,7 @@ function App() {
         <Routes>
           <Route path="/*" element={<HomePage />} />
           <Route path="/campaign" element={<CampaignPage />} />
+          <Route path="/detail-campaign/:id" element={<DetailCampaignPage />} />
           <Route path="/article" element={<ArticlePage />} />
           <Route path="/destination" element={<DestinationPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
