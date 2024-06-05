@@ -3,11 +3,30 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import Colors from '../atoms/Colors';
 
 function DetailCardItem({
-  title, content, isLink, link,
+  title, content, isLink, link, isButton,
 }) {
+  let renderedContent;
+
+  if (isLink) {
+    renderedContent = (
+      <Typography component={Link} to={link} variant="body1">
+        {content}
+      </Typography>
+    );
+  } else if (isButton) {
+    renderedContent = (
+      <Button component={Link} to={link} variant="contained">
+        {content}
+      </Button>
+    );
+  } else {
+    renderedContent = <Typography variant="body1">{content}</Typography>;
+  }
+
   return (
     <Card
       sx={{
@@ -18,13 +37,7 @@ function DetailCardItem({
       }}
     >
       <Typography variant="h6">{title}</Typography>
-      {isLink ? (
-        <Typography component={Link} to={link} variant="body1">
-          {content}
-        </Typography>
-      ) : (
-        <Typography variant="body1">{content}</Typography>
-      )}
+      {renderedContent}
     </Card>
   );
 }
@@ -34,11 +47,13 @@ DetailCardItem.propTypes = {
   content: PropTypes.string.isRequired,
   isLink: PropTypes.bool,
   link: PropTypes.string,
+  isButton: PropTypes.bool,
 };
 
 DetailCardItem.defaultProps = {
   isLink: false,
   link: '',
+  isButton: false,
 };
 
 export default DetailCardItem;
