@@ -1,7 +1,10 @@
 import React from 'react';
-import {
-  Box, Container, Grid, Typography, Link,
-} from '@mui/material';
+import { Link } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import Colors from '../atoms/Colors';
 
 function Footer() {
@@ -10,10 +13,10 @@ function Footer() {
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           <Grid item xs={12} md={5}>
-            <Typography variant="h6" gutterBottom>
+            <Typography variant="h6" color="inherit">
               GreenWay
             </Typography>
-            <Typography variant="body1" gutterBottom>
+            <Typography variant="body1" color="inherit">
               GreenWay is an application that supports sustainable tourism with the vision of
               tourism while preserving the ecosystem environment.
             </Typography>
@@ -21,66 +24,32 @@ function Footer() {
           <Grid item xs={12} md={7}>
             <Grid container spacing={4}>
               <Grid item xs={12} md={4}>
-                <Typography variant="h6" gutterBottom>
-                  Features
-                </Typography>
-                <Box>
-                  <Link href="/" color="inherit" underline="none">
-                    Home
-                  </Link>
-                </Box>
-                <Box>
-                  <Link href="/" color="inherit" underline="none">
-                    Article
-                  </Link>
-                </Box>
-                <Box>
-                  <Link href="/" color="inherit" underline="none">
-                    Destination
-                  </Link>
-                </Box>
-                <Box>
-                  <Link href="/" color="inherit" underline="none">
-                    Community
-                  </Link>
-                </Box>
+                <Typography variant="h6" color="inherit">Navigation</Typography>
+                <Stack spacing={1}>
+                  <Typography component={Link} to="/" variant="body1" color="inherit" sx={{ textDecoration: 'none' }}>Destination</Typography>
+                  <Typography component={Link} to="/" variant="body1" color="inherit" sx={{ textDecoration: 'none' }}>Campaign</Typography>
+                  <Typography component={Link} to="/" variant="body1" color="inherit" sx={{ textDecoration: 'none' }}>Community</Typography>
+                </Stack>
               </Grid>
               <Grid item xs={12} md={4}>
-                <Typography variant="h6" gutterBottom>
-                  Contact Us
+                <Typography variant="h6" color="inherit">Contact Us</Typography>
+                <Typography variant="body1" color="inherit">
+                  Contact us with our account if there are problems using the GreenWay website.
                 </Typography>
-                <Box>
-                  <Typography variant="body1" gutterBottom>
-                    Contact us with our account if there are problems
-                    using the GreenWay website.
-                  </Typography>
-                </Box>
               </Grid>
               <Grid item xs={12} md={4}>
-                <Typography variant="h6" gutterBottom>
-                  The Creator
-                </Typography>
-                <Box>
-                  <Typography variant="body1" gutterBottom>
-                    Dhea Fesa Athallah
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography variant="body1" gutterBottom>
-                    Ria Hayati
-                  </Typography>
-                </Box>
-                <Box>
-                  <Typography variant="body1" gutterBottom>
-                    Ajeng Alya Kartika Sari
-                  </Typography>
-                </Box>
+                <Typography variant="h6" color="inherit">The Creator</Typography>
+                <Stack spacing={1}>
+                  <Typography variant="body1" color="inherit">Dhea Fesa Athallah</Typography>
+                  <Typography variant="body1" color="inherit">Ria Hayati</Typography>
+                  <Typography variant="body1" color="inherit">Ajeng Alya Kartika Sari</Typography>
+                </Stack>
               </Grid>
             </Grid>
           </Grid>
         </Grid>
         <Box sx={{ mt: 4, textAlign: 'center' }}>
-          <Typography variant="body2" color="inherit">
+          <Typography variant="body1" color="inherit">
             {'© '}
             {new Date().getFullYear()}
             {' GreenWay. All rights reserved.'}
