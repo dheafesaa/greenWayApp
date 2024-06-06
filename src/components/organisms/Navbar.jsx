@@ -1,23 +1,22 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Box from '@mui/material/Box';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { useTheme } from '@mui/material/styles';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { Typography } from '@mui/material';
-import Button from '../atoms/Button';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Hidden from '@mui/material/Hidden';
 import Colors from '../atoms/Colors';
 
-function HamburgerMenu({ authUser, signOut }) {
+function Navbar({ authUser, signOut }) {
   const [anchorEl, setAnchorEl] = useState(null);
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const location = useLocation();
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -35,22 +34,46 @@ function HamburgerMenu({ authUser, signOut }) {
   ];
 
   return (
-    <Box sx={{ flexGrow: 1, marginBottom: 7 }}>
+    <Box sx={{ flexGrow: 1, marginBottom: 6 }}>
       <AppBar position="fixed" sx={{ background: Colors.secondary.soft, boxShadow: 'none' }}>
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="h4" fontWeight="600">
-            <span style={{ color: Colors.secondary.hard }}>Green</span>
-            <span style={{ color: '#000' }}>Way</span>
-          </Typography>
-          {isMobile ? (
-            <>
+        <Container maxWidth="lg">
+          <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Typography variant="h4" sx={{ mb: 0 }}>
+              <span style={{ color: Colors.secondary.hard }}>Green</span>
+              <span style={{ color: '#000' }}>Way</span>
+            </Typography>
+            <Hidden smDown>
+              <Box sx={{ display: 'flex', justifyContent: 'center', gap: '24px' }}>
+                {menuItems.map((item) => (
+                  <Typography
+                    component={Link}
+                    variant="body1"
+                    key={item.label}
+                    to={item.path}
+                    sx={{
+                      fontWeight: 'bold',
+                      textDecoration: 'none',
+                      color: Colors.primary.soft,
+                      margin: '0 10px',
+                      borderBottom: location.pathname === item.path ? `2px solid ${Colors.primary.soft}` : 'none',
+                    }}
+                  >
+                    {item.label}
+                  </Typography>
+                ))}
+              </Box>
+              {authUser ? (
+                <Button onClick={signOut}>Sign Out</Button>
+              ) : (
+                <Button component={Link} to="/login">Login</Button>
+              )}
+            </Hidden>
+            <Hidden smUp>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
                 {authUser ? (
-                  <Button size="large" py={0.5} onClick={signOut} fontWeight={600}>
-                    Sign Out
-                  </Button>
+                  <Button onClick={signOut}>Sign Out</Button>
                 ) : (
-                  <Button size="large" py={0.5} fontWeight={600}>Login</Button>
+                  <Button component={Link} to="/login">Login</Button>
                 )}
                 <IconButton
                   edge="start"
@@ -81,39 +104,18 @@ function HamburgerMenu({ authUser, signOut }) {
                     to={item.path}
                     sx={{
                       color: Colors.primary.hard,
-                      fontWeight: 600,
+                      fontSize: '1rem',
+                      fontWeight: 'bold',
+                      backgroundColor: location.pathname === item.path ? Colors.primary.light : 'inherit',
                     }}
                   >
                     {item.label}
                   </MenuItem>
                 ))}
               </Menu>
-            </>
-          ) : (
-            <>
-              <Box sx={{ display: 'flex', justifyContent: 'center', gap: '24px' }}>
-                {menuItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    to={item.path}
-                    style={{ textDecoration: 'none', color: 'black', margin: '0 10px' }}
-                  >
-                    <Typography variant="subtitle1" color={Colors.primary.soft} fontWeight="600">
-                      {item.label}
-                    </Typography>
-                  </Link>
-                ))}
-              </Box>
-              {authUser ? (
-                <Button py={0.5} onClick={signOut} fontWeight={600}>
-                  Sign Out
-                </Button>
-              ) : (
-                <Button to="/login" py={0.5} fontWeight={600}>Login</Button>
-              )}
-            </>
-          )}
-        </Toolbar>
+            </Hidden>
+          </Toolbar>
+        </Container>
       </AppBar>
     </Box>
   );
@@ -124,13 +126,13 @@ const authUserShape = {
   name: PropTypes.string.isRequired,
 };
 
-HamburgerMenu.propTypes = {
+Navbar.propTypes = {
   authUser: PropTypes.shape(authUserShape),
   signOut: PropTypes.func.isRequired,
 };
 
-HamburgerMenu.defaultProps = {
+Navbar.defaultProps = {
   authUser: null,
 };
 
-export default HamburgerMenu;
+export default Navbar;

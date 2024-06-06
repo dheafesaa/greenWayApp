@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage';
 import RegisterPage from './pages/RegisterPage';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncUnsetAuthUser } from './states/authUser/action';
-import HamburgerMenu from './components/organisms/HamburgerMenu';
+import Navbar from './components/organisms/Navbar';
 import Footer from './components/molecules/Footer';
 import ArticlePage from './pages/ArticlePage';
 import DestinationPage from './pages/DestinationPage';
@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="app">
       <header>
-        {!isLoginOrRegisterPage && <HamburgerMenu authUser={authUser} signOut={onSignOut} />}
+        {!isLoginOrRegisterPage && <Navbar authUser={authUser} signOut={onSignOut} />}
       </header>
       <main>
         <Routes>

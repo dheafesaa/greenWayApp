@@ -52,6 +52,42 @@ const baseTheme = createTheme({
       lineHeight: 1.4,
     },
   },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          borderRadius: '12px',
+          textTransform: 'none',
+          padding: '4px 24px',
+          fontSize: '1rem',
+          fontWeight: 'bold',
+        },
+        contained: {
+          backgroundColor: Colors.primary.soft,
+          color: '#fff',
+          '&:hover': {
+            backgroundColor: Colors.primary.hard,
+          },
+        },
+        outlined: {
+          borderColor: Colors.primary.soft,
+          color: '#fff',
+          '&:hover': {
+            borderColor: Colors.primary.soft,
+            backgroundColor: Colors.primary.hard,
+            color: '#fff',
+          },
+        },
+        text: {
+          color: '#fff',
+          backgroundColor: Colors.primary.soft,
+          '&:hover': {
+            backgroundColor: Colors.primary.hard,
+          },
+        },
+      },
+    },
+  },
 });
 
 const theme = responsiveFontSizes(baseTheme);
