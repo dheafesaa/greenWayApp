@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import CardImage from '../atoms/CardImage';
 import HeroContent from '../molecules/HeroContent';
-import Button from '../atoms/Button';
 
 function HeroLayout({ title, description, imageUrl }) {
   return (
@@ -16,7 +17,13 @@ function HeroLayout({ title, description, imageUrl }) {
     >
       <Box flex={{ xs: '1 1 100%', md: '1 1 50%' }}>
         <HeroContent title={title} description={description} />
-        <Button size="large" py={1} my={{ xs: 2, md: 4 }} fontWeight={600}>
+        <Button
+          component={Link}
+          to="/destination"
+          variant="contained"
+          size="medium"
+          sx={{ mt: { xs: 2, md: 4 } }}
+        >
           Go Travel
         </Button>
       </Box>
