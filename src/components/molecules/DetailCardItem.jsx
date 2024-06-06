@@ -19,7 +19,7 @@ function DetailCardItem({
     );
   } else if (isButton) {
     renderedContent = (
-      <Button component={Link} to={link} variant="contained">
+      <Button component={Link} to={link} variant="contained" size="medium">
         {content}
       </Button>
     );

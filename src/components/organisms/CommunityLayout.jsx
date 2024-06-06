@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import CardImage from '../atoms/CardImage';
-import Button from '../atoms/Button';
 import LayoutContent from '../molecules/LayoutContent';
 
 function CommunityLayout({ title, description, imageUrl }) {
@@ -16,7 +17,13 @@ function CommunityLayout({ title, description, imageUrl }) {
     >
       <Box flex={{ xs: '1 1 100%', md: '1 1 50%' }}>
         <LayoutContent title={title} description={description} />
-        <Button size="large" py={1} my={2} fontWeight={600}>
+        <Button
+          component={Link}
+          to="/threads"
+          variant="contained"
+          size="medium"
+          sx={{ mt: { xs: 2, md: 4 } }}
+        >
           Join Now
         </Button>
       </Box>

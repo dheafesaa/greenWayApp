@@ -71,7 +71,7 @@ const baseTheme = createTheme({
         },
         outlined: {
           borderColor: Colors.primary.soft,
-          color: '#fff',
+          color: Colors.primary.soft,
           '&:hover': {
             borderColor: Colors.primary.soft,
             backgroundColor: Colors.primary.hard,
@@ -79,11 +79,18 @@ const baseTheme = createTheme({
           },
         },
         text: {
-          color: '#fff',
-          backgroundColor: Colors.primary.soft,
+          color: Colors.primary.soft,
+          backgroundColor: 'transparent',
           '&:hover': {
             backgroundColor: Colors.primary.hard,
+            color: '#fff',
           },
+        },
+        sizeMedium: {
+          padding: '8px 32px',
+        },
+        sizeLarge: {
+          padding: '12px 32px',
         },
       },
     },
