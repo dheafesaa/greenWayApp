@@ -63,17 +63,17 @@ function Navbar({ authUser, signOut }) {
                 ))}
               </Box>
               {authUser ? (
-                <Button variant="contained" onClick={signOut}>Sign Out</Button>
+                <Button variant="contained" size="small" onClick={signOut}>Sign Out</Button>
               ) : (
-                <Button variant="contained" component={Link} to="/login">Login</Button>
+                <Button variant="contained" size="small" component={Link} to="/login">Login</Button>
               )}
             </Hidden>
             <Hidden smUp>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
                 {authUser ? (
-                  <Button variant="contained" onClick={signOut}>Sign Out</Button>
+                  <Button variant="contained" size="small" onClick={signOut}>Sign Out</Button>
                 ) : (
-                  <Button variant="contained" component={Link} to="/login">Login</Button>
+                  <Button variant="contained" size="small" component={Link} to="/login">Login</Button>
                 )}
                 <IconButton
                   edge="start"

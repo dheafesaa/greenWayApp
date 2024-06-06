@@ -58,7 +58,6 @@ const baseTheme = createTheme({
         root: {
           borderRadius: '12px',
           textTransform: 'none',
-          padding: '4px 24px',
           fontSize: '1rem',
           fontWeight: 'bold',
         },
@@ -85,6 +84,9 @@ const baseTheme = createTheme({
             backgroundColor: Colors.primary.hard,
             color: '#fff',
           },
+        },
+        sizeSmall: {
+          padding: '4px 24px',
         },
         sizeMedium: {
           padding: '8px 32px',
