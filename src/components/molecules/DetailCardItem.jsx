@@ -24,7 +24,7 @@ function DetailCardItem({
       </Button>
     );
   } else {
-    renderedContent = <Typography variant="body1">{content}</Typography>;
+    renderedContent = <Typography variant="body1" textAlign="justify">{content}</Typography>;
   }
 
   return (

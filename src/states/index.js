@@ -8,6 +8,7 @@ import reviewsReducer from './reviews/reducer';
 import articlesReducer from './articles/reducer';
 import destinationsReducer from './destinations/reducer';
 import aboutUsReducer from './aboutUS/reducer';
+import detailDestinationReducer from './detailDestination/reducer';
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     articles: articlesReducer,
     destinations: destinationsReducer,
     aboutUs: aboutUsReducer,
+    detailDestination: detailDestinationReducer,
   },
 });
 
