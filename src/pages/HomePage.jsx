@@ -76,7 +76,7 @@ function HomePage() {
         </Box>
         <Box py={6}>
           <Title title="Campaign" />
-          <SeeAllButton to="/campaign" />
+          <SeeAllButton to="/campaigns" />
           <CampaignCardList campaignCards={limitedCampaigns} />
         </Box>
         <Box py={6}>

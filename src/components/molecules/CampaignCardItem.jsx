@@ -5,9 +5,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
+import { Link } from 'react-router-dom';
 import Colors from '../atoms/Colors';
 
-function CampaignCardItem({ picture, name, location }) {
+function CampaignCardItem({
+  id, picture, name, location,
+}) {
   return (
     <Card sx={{ borderRadius: '16px', minHeight: '210px', position: 'relative' }}>
       <CardMedia
@@ -41,9 +44,14 @@ function CampaignCardItem({ picture, name, location }) {
         }}
       >
         <Typography
+          component={Link}
+          to={`/campaigns/${id}`}
           variant="body1"
           color={Colors.white}
-          fontWeight="600"
+          fontWeight="bold"
+          sx={{
+            textDecoration: 'none',
+          }}
         >
           {name}
         </Typography>

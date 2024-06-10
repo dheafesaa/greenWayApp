@@ -9,6 +9,7 @@ import articlesReducer from './articles/reducer';
 import destinationsReducer from './destinations/reducer';
 import aboutUsReducer from './aboutUS/reducer';
 import detailDestinationReducer from './detailDestination/reducer';
+import detailCampaignReducer from './detailCampaign/reducer';
 
 const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ const store = configureStore({
     destinations: destinationsReducer,
     aboutUs: aboutUsReducer,
     detailDestination: detailDestinationReducer,
+    detailCampaign: detailCampaignReducer,
   },
 });
 
