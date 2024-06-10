@@ -20,7 +20,6 @@ function DetailDestinationPage() {
       <Container maxWidth="lg">
         {detailDestination && (
           <DetailDestination
-            key={detailDestination.idDestination}
             {...detailDestination}
           />
         )}

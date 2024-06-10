@@ -186,6 +186,22 @@ const api = (() => {
     return detailDestination;
   }
 
+  async function getDetailCampaign(id) {
+    const response = await fetch(`${BASE_URL}/campaign/${id}`);
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: { campaign } } = responseJson;
+
+    return campaign;
+  }
+
   return {
     putAccessToken,
     getAccessToken,
@@ -198,6 +214,7 @@ const api = (() => {
     getAllDestinations,
     getAllAboutUs,
     getDetailDestination,
+    getDetailCampaign,
   };
 })();
 

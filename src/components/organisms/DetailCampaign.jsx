@@ -5,28 +5,29 @@ import CardImage from '../atoms/CardImage';
 import DetailCardItem from '../molecules/DetailCardItem';
 import HeaderDetail from '../molecules/HeaderDetail';
 
-function DetailCampaign({ src, alt }) {
+function DetailCampaign({
+  id, picture, name, location, date, link, description,
+}) {
   return (
     <Box sx={{ flexGrow: 1, pb: 4 }}>
-      <CardImage src={src} alt={alt} />
-      <HeaderDetail location="Pasar Minggu, Jakarta" title="Hari Bebas Asap" />
-      <DetailCardItem title="ID Campaign" content="dymtDbBFp9zSrWJbCmHF" />
-      <DetailCardItem title="Time Periode" content="dymtDbBFp9zSrWJbCmHF" />
-      <DetailCardItem title="Link Enrollment" content="Click Me!" isLink />
-      <DetailCardItem
-        title="Description"
-        content="Sebagai wisatawan yang bertanggungjawab untuk mengurangi produksi emisi karbon kendaraanbermotor,
-        Kebun Binatang Ragunan mengadakan Champaign untuk para pengunjung dengan mengajak untuk menggunakan sepeda
-        yang disediakan oleh pihak Kebun Binatang ketika berada di Kebun Binatang selama Champaign berlangsung.
-        Ayo ramaikan!"
-      />
+      <CardImage src={picture} alt={name} borderRadius />
+      <HeaderDetail location={location} title={name} />
+      <DetailCardItem title="ID Campaign" content={id} />
+      <DetailCardItem title="Time Periode" content={date} />
+      <DetailCardItem title="Link Enrollment" content="Click Me!" link={link} isLink />
+      <DetailCardItem title="Description" content={description} />
     </Box>
   );
 }
 
 DetailCampaign.propTypes = {
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  picture: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 export default DetailCampaign;

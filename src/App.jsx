@@ -45,8 +45,8 @@ function App() {
       <main>
         <Routes>
           <Route path="/*" element={<HomePage />} />
-          <Route path="/campaign" element={<CampaignPage />} />
-          <Route path="/detail-campaign/:id" element={<DetailCampaignPage />} />
+          <Route path="/campaigns" element={<CampaignPage />} />
+          <Route path="/campaigns/:id" element={<DetailCampaignPage />} />
           <Route path="/article" element={<ArticlePage />} />
           <Route path="/destinations" element={<DestinationPage />} />
           <Route path="/destinations/:id" element={<DetailDestinationPage />} />
