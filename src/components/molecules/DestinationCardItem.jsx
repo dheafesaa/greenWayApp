@@ -5,9 +5,12 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
 import { Box, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 import Colors from '../atoms/Colors';
 
-function DestinationCardItem({ photo, name, location }) {
+function DestinationCardItem({
+  id, photo, name, location,
+}) {
   return (
     <Card sx={{ borderRadius: '16px', minHeight: '210px', position: 'relative' }}>
       <CardMedia
@@ -40,9 +43,14 @@ function DestinationCardItem({ photo, name, location }) {
       }}
       >
         <Typography
+          component={Link}
+          to={`/destinations/${id}`}
           variant="body1"
           color={Colors.white}
-          fontWeight="600"
+          fontWeight="bold"
+          sx={{
+            textDecoration: 'none',
+          }}
         >
           {name}
         </Typography>

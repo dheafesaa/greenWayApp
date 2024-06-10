@@ -5,24 +5,36 @@ import CardImage from '../atoms/CardImage';
 import DetailCardItem from '../molecules/DetailCardItem';
 import HeaderDetail from '../molecules/HeaderDetail';
 
-function DetailDestination({ src, alt }) {
+function DetailDestination({
+  idCampaign, photo, name, location, description,
+}) {
   return (
     <Box sx={{ flexGrow: 1, pb: 4 }}>
-      <CardImage src={src} alt={alt} />
-      <HeaderDetail location="Pasar Minggu, Jakarta" title="Kebun Margasatwa Ragunan" />
-      <DetailCardItem title="Campaign" content="Unlock Your Story" link="/" isButton />
-      <DetailCardItem
-        title="Description"
-        content="Kampanye Hutan Lestari di Taman Nasional Way Kambas, Lampung, bertujuan
-        untuk melestarikan hutan dan keanekaragaman hayati yang ada di dalamnya"
-      />
+      <CardImage src={photo} alt={name} />
+      <HeaderDetail location={location} title={name} />
+      {idCampaign && (
+        <DetailCardItem
+          title="Campaign"
+          content="Unlock Your Story"
+          link={`/campaigns/${idCampaign}`}
+          isButton
+        />
+      )}
+      <DetailCardItem title="Description" content={description} />
     </Box>
   );
 }
 
 DetailDestination.propTypes = {
-  src: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  idCampaign: PropTypes.string,
+  photo: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
+
+DetailDestination.defaultProps = {
+  idCampaign: null,
 };
 
 export default DetailDestination;

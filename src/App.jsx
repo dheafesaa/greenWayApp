@@ -48,8 +48,8 @@ function App() {
           <Route path="/campaign" element={<CampaignPage />} />
           <Route path="/detail-campaign/:id" element={<DetailCampaignPage />} />
           <Route path="/article" element={<ArticlePage />} />
-          <Route path="/destination" element={<DestinationPage />} />
-          <Route path="/detail-destination/:id" element={<DetailDestinationPage />} />
+          <Route path="/destinations" element={<DestinationPage />} />
+          <Route path="/destinations/:id" element={<DetailDestinationPage />} />
           <Route path="/discussion" element={<DiscussionPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/login" element={<LoginPage />} />

@@ -170,6 +170,22 @@ const api = (() => {
     return aboutUs;
   }
 
+  async function getDetailDestination(id) {
+    const response = await fetch(`${BASE_URL}/destination/${id}`);
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: { detailDestination } } = responseJson;
+
+    return detailDestination;
+  }
+
   return {
     putAccessToken,
     getAccessToken,
@@ -181,6 +197,7 @@ const api = (() => {
     getAllArticles,
     getAllDestinations,
     getAllAboutUs,
+    getDetailDestination,
   };
 })();
 
