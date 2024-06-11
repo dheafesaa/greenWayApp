@@ -15,6 +15,7 @@ import CampaignPage from './pages/CampaignPage';
 import DetailCampaignPage from './pages/DetailCampaignPage';
 import DetailDestinationPage from './pages/DetailDestinationPage';
 import DiscussionPage from './pages/DiscussionPage';
+import AddDiscussionPage from './pages/AddDiscussionPage';
 
 function App() {
   const authUser = useSelector((state) => state.authUser);
@@ -49,8 +50,10 @@ function App() {
           <Route path="/campaigns/:id" element={<DetailCampaignPage />} />
           <Route path="/article" element={<ArticlePage />} />
           <Route path="/destinations" element={<DestinationPage />} />
+          <Route path="/add-discussion" element={<AddDiscussionPage />} />
           <Route path="/destinations/:id" element={<DetailDestinationPage />} />
           <Route path="/discussions" element={<DiscussionPage />} />
+          <Route path="/discussions/add" element={<AddDiscussionPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />

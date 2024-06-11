@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import DiscussionCardList from '../components/organisms/DiscussionCardList';
 import Title from '../components/atoms/Title';
+import AddButton from '../components/atoms/AddButton';
 import PopularCardList from '../components/organisms/PopularCardList';
+import DiscussionCardList from '../components/organisms/DiscussionCardList';
 import {
   asyncReceiveDiscussions,
   asyncToogleLikeDiscussion,
@@ -41,7 +42,9 @@ function DiscussionPage() {
     setSelectedCategory(category);
   };
 
-  const categories = [...new Set(discussions.map((discussion) => discussion.category))];
+  const categories = [
+    ...new Set(discussions.map((discussion) => discussion.category)),
+  ];
 
   const filteredDiscussions = selectedCategory
     ? discussions.filter((thread) => thread.category === selectedCategory)
@@ -60,9 +63,13 @@ function DiscussionPage() {
           <Typography variant="h6" color="black">
             Popular Category
           </Typography>
-          <PopularCardList categories={categories} onCategorySelect={handleCategorySelect} />
+          <PopularCardList
+            categories={categories}
+            onCategorySelect={handleCategorySelect}
+          />
         </Box>
         <Title title="Discussion Available" textAlign="left" />
+        {authUser && <AddButton link="/discussions/add" />}
         <DiscussionCardList
           discussions={discussionList}
           like={onLike}
