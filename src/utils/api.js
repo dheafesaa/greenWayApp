@@ -202,6 +202,82 @@ const api = (() => {
     return campaign;
   }
 
+  async function getAllDiscussions() {
+    const response = await fetch(`${BASE_URL}/discussions`);
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: { discussions } } = responseJson;
+
+    return discussions;
+  }
+
+  async function toggleLikeDiscussion(id) {
+    const response = await _fetchWithAuth(`${BASE_URL}/discussion/${id}/up-vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        discussionId: id,
+      }),
+    });
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+  }
+
+  async function toggleUnlikeDiscussion(id) {
+    const response = await _fetchWithAuth(`${BASE_URL}/discussion/${id}/down-vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        discussionId: id,
+      }),
+    });
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+  }
+
+  async function toggleNeutralizeDiscussion(id) {
+    const response = await _fetchWithAuth(`${BASE_URL}/discussion/${id}/neutral-vote`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        discussionId: id,
+      }),
+    });
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+  }
+
   return {
     putAccessToken,
     getAccessToken,
@@ -215,6 +291,10 @@ const api = (() => {
     getAllAboutUs,
     getDetailDestination,
     getDetailCampaign,
+    getAllDiscussions,
+    toggleLikeDiscussion,
+    toggleUnlikeDiscussion,
+    toggleNeutralizeDiscussion,
   };
 })();
 
