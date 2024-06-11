@@ -17,7 +17,6 @@ import {
 function DiscussionPage() {
   const dispatch = useDispatch();
   const discussions = useSelector((state) => state?.discussions);
-  const users = useSelector((state) => state.users);
   const authUser = useSelector((state) => state.authUser);
 
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -47,12 +46,11 @@ function DiscussionPage() {
   ];
 
   const filteredDiscussions = selectedCategory
-    ? discussions.filter((thread) => thread.category === selectedCategory)
+    ? discussions.filter((discussion) => discussion.category === selectedCategory)
     : discussions;
 
-  const discussionList = filteredDiscussions.map((thread) => ({
-    ...thread,
-    user: users.find((user) => user.id === thread.ownerId),
+  const discussionList = filteredDiscussions.map((discussion) => ({
+    ...discussion,
     authUser: authUser ? authUser.id : null,
   }));
 
@@ -69,7 +67,7 @@ function DiscussionPage() {
           />
         </Box>
         <Title title="Discussion Available" textAlign="left" />
-        {authUser && <AddButton link="/discussions/add" />}
+        {authUser?.id && <AddButton link="/discussions/add" />}
         <DiscussionCardList
           discussions={discussionList}
           like={onLike}

@@ -16,12 +16,12 @@ const discussionsReducer = (discussions = [], action = {}) => {
             .filter((id) => id !== action.payload.userId);
 
           return {
-            ...discussions,
+            ...discussion,
             upVotesBy: updatedUpVotesBy,
             downVotesBy: updatedDownVotesBy,
           };
         }
-        return discussions;
+        return discussion;
       });
     case ActionType.TOGGLE_UNLIKE_DISCUSSION:
       return discussions.map((discussion) => {
@@ -42,7 +42,7 @@ const discussionsReducer = (discussions = [], action = {}) => {
         }
         return discussion;
       });
-    case ActionType.TOGGLE_NEUTRALIZE_discussion:
+    case ActionType.TOGGLE_NEUTRALIZE_DISCUSSION:
       return discussions.map((discussion) => {
         if (discussion.id === action.payload.discussionId) {
           return {
