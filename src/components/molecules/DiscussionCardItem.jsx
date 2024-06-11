@@ -12,28 +12,94 @@ import {
   BiSolidDislike,
   BiComment,
 } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 import Colors from '../atoms/Colors';
 import ActionButton from '../atoms/ActionButton';
+import { postedAt } from '../../utils';
 
 function DiscussionCardItem({
-  photo, creator, postDate, title, content, category, showLikes, showDislikes, showComments,
+  id,
+  photo,
+  name,
+  createdAt,
+  title,
+  body,
+  category,
+  upVotesBy,
+  downVotesBy,
+  comments,
+  like,
+  unlike,
+  authUser,
+  neutralize,
+  showLikes,
+  showDislikes,
+  showComments,
 }) {
+  const isDiscussionLiked = upVotesBy.includes(authUser);
+  const isDiscussionUnliked = downVotesBy.includes(authUser);
+
+  const handleLike = (event) => {
+    event.stopPropagation();
+    if (!isDiscussionLiked) {
+      like(id);
+    } else {
+      neutralize(id);
+    }
+  };
+
+  const handleUnlike = (event) => {
+    event.stopPropagation();
+    if (!isDiscussionUnliked) {
+      unlike(id);
+    } else {
+      neutralize(id);
+    }
+  };
+
   return (
-    <Card sx={{ border: `1px solid ${Colors.secondary.hard}`, borderRadius: '16px', padding: 2 }}>
+    <Card
+      sx={{
+        border: `1px solid ${Colors.secondary.hard}`,
+        borderRadius: '16px',
+        padding: 2,
+      }}
+    >
       <CardContent>
         <Box display="flex" alignItems="center" marginBottom={2}>
-          <Avatar src={photo} sx={{ width: '4rem', height: '4rem', marginRight: 2 }} />
+          <Avatar
+            src={photo}
+            sx={{ width: '4rem', height: '4rem', marginRight: 2 }}
+          />
           <Box>
-            <Typography variant="h6" color="black" fontWeight="bold" sx={{ mb: 0 }}>{creator}</Typography>
+            <Typography
+              variant="h6"
+              color="black"
+              fontWeight="bold"
+              sx={{ mb: 0 }}
+            >
+              {name}
+            </Typography>
             <Typography variant="body1" color="textSecondary">
               Posted At
               {' '}
-              {postDate}
+              {postedAt(createdAt)}
             </Typography>
           </Box>
         </Box>
-        <Typography variant="h6" color="black" fontWeight="bold">{title}</Typography>
-        <Typography variant="body1" paragraph>{content}</Typography>
+        <Typography
+          component={Link}
+          to={`/discussions/${id}`}
+          variant="h6"
+          color="black"
+          fontWeight="bold"
+          sx={{ mb: 1, textDecoration: 'none' }}
+        >
+          {title}
+        </Typography>
+        <Typography variant="body1" paragraph>
+          {body}
+        </Typography>
         {category && (
           <Typography variant="body1" fontWeight="bold">
             #
@@ -43,24 +109,24 @@ function DiscussionCardItem({
         <Box display="flex" alignItems="center" gap={2} marginTop={2}>
           {showLikes && (
           <ActionButton
-            defaultIcon={BiLike}
-            activeIcon={BiSolidLike}
-            label="Like"
+            Icon={isDiscussionLiked ? BiSolidLike : BiLike}
+            label={upVotesBy.length}
             color={Colors.primary.soft}
+            onClick={handleLike}
           />
           )}
           {showDislikes && (
             <ActionButton
-              defaultIcon={BiDislike}
-              activeIcon={BiSolidDislike}
-              label="Dislike"
+              Icon={isDiscussionUnliked ? BiSolidDislike : BiDislike}
+              label={downVotesBy.length}
               color={Colors.primary.soft}
+              onClick={handleUnlike}
             />
           )}
           {showComments && (
             <ActionButton
-              defaultIcon={BiComment}
-              label="Comments"
+              Icon={BiComment}
+              label={comments}
               color={Colors.primary.soft}
             />
           )}
@@ -70,29 +136,28 @@ function DiscussionCardItem({
   );
 }
 
-const discussionItemShape = {
-  photo: PropTypes.string.isRequired,
+const userShape = {
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  postDate: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  likes: PropTypes.number.isRequired,
-  dislikes: PropTypes.number.isRequired,
-  comments: PropTypes.number.isRequired,
+};
+
+const discussionItemShape = {
+  id: PropTypes.string.isRequired,
+  upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  user: PropTypes.shape(userShape).isRequired,
+  authUser: PropTypes.string,
 };
 
 DiscussionCardItem.propTypes = {
   ...discussionItemShape,
-  showLikes: PropTypes.bool,
-  showDislikes: PropTypes.bool,
-  showComments: PropTypes.bool,
+  like: PropTypes.func,
+  unlike: PropTypes.func,
 };
 
 DiscussionCardItem.defaultProps = {
-  showLikes: false,
-  showDislikes: false,
-  showComments: false,
+  like: null,
+  unlike: null,
 };
 
 export { discussionItemShape };

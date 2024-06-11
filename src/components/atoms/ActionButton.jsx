@@ -1,42 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 function ActionButton({
-  defaultIcon: DefaultIcon, activeIcon: ActiveIcon, label, color, onClick,
+  Icon, label, color, onClick,
 }) {
-  const [isActive, setIsActive] = useState(false);
-
-  const handleClick = () => {
-    setIsActive(!isActive);
-    if (onClick) onClick(!isActive);
-  };
-
   return (
-    <Box display="flex" alignItems="center" onClick={handleClick} sx={{ cursor: 'pointer' }}>
-      {isActive && ActiveIcon ? (
-        <ActiveIcon color={color} style={{ marginRight: '4px', width: '20px', height: '20px' }} />
-      ) : (
-        <DefaultIcon color={color} style={{ marginRight: '4px', width: '20px', height: '20px' }} />
-      )}
+    <Box display="flex" alignItems="center" onClick={onClick} sx={{ cursor: 'pointer' }}>
+      <Icon color={color} style={{ marginRight: '4px', width: '20px', height: '20px' }} />
       <Typography variant="body1">{label}</Typography>
     </Box>
   );
 }
 
 ActionButton.propTypes = {
-  defaultIcon: PropTypes.elementType.isRequired,
-  activeIcon: PropTypes.elementType,
-  label: PropTypes.string.isRequired,
+  Icon: PropTypes.elementType.isRequired,
+  label: PropTypes.number.isRequired,
   color: PropTypes.string,
   onClick: PropTypes.func,
 };
 
 ActionButton.defaultProps = {
   color: 'inherit',
-  activeIcon: null,
-  onClick: null,
+  onClick: () => {},
 };
 
 export default ActionButton;

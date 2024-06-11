@@ -19,7 +19,7 @@ function CommunityLayout({ title, description, imageUrl }) {
         <LayoutContent title={title} description={description} />
         <Button
           component={Link}
-          to="/discussion"
+          to="/discussions"
           variant="contained"
           size="medium"
           sx={{ mt: { xs: 2, md: 4 } }}

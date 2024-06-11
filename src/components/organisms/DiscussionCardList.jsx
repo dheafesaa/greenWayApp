@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import DiscussionCardItem, { discussionItemShape } from '../molecules/DiscussionCardItem';
+import DiscussionCardItem, {
+  discussionItemShape,
+} from '../molecules/DiscussionCardItem';
 
 function DiscussionCardList({
   discussions, like, unlike, neutralize,
@@ -30,7 +32,7 @@ function DiscussionCardList({
 
 DiscussionCardList.propTypes = {
   discussions: PropTypes.arrayOf(
-    PropTypes.shape(discussionItemShape),
+    PropTypes.shape({ ...discussionItemShape, authUser: PropTypes.string }),
   ).isRequired,
   like: PropTypes.func.isRequired,
   unlike: PropTypes.func.isRequired,

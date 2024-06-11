@@ -1,98 +1,58 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import DiscussionCardList from '../components/organisms/DiscussionCardList';
 import Title from '../components/atoms/Title';
 import PopularCardList from '../components/organisms/PopularCardList';
-
-const discussionList = [
-  {
-    id: 'halo1',
-    creator: 'Dhea Fesa',
-    postDate: 'May 26, 2024',
-    title: 'Example 1',
-    content: 'Lorem ipsum dolor sit amet consectetur. Viverra vitae proin eget malesuada sollicitudin in at ridiculus purus. Velit morbi consequat nisi tempus et augue sem justo morbi ... ',
-    category: 'category1',
-    label: '1',
-  },
-  {
-    id: 'halo2',
-    creator: 'Dhea Fesa',
-    postDate: 'May 26, 2024',
-    title: 'Example 2',
-    content: 'Lorem ipsum dolor sit amet consectetur. Viverra vitae proin eget malesuada sollicitudin in at ridiculus purus. Velit morbi consequat nisi tempus et augue sem justo morbi ... ',
-    category: 'category2',
-    label: '1',
-  },
-  {
-    id: 'halo3',
-    creator: 'Dhea Fesa',
-    postDate: 'May 26, 2024',
-    title: 'Example 3',
-    content: 'Lorem ipsum dolor sit amet consectetur. Viverra vitae proin eget malesuada sollicitudin in at ridiculus purus. Velit morbi consequat nisi tempus et augue sem justo morbi ... ',
-    category: 'category3',
-    label: '1',
-  },
-  {
-    id: 'halo4',
-    creator: 'Dhea Fesa',
-    postDate: 'May 26, 2024',
-    title: 'Example 1',
-    content: 'Lorem ipsum dolor sit amet consectetur. Viverra vitae proin eget malesuada sollicitudin in at ridiculus purus. Velit morbi consequat nisi tempus et augue sem justo morbi ... ',
-    category: 'category4',
-    label: '1',
-  },
-  {
-    id: 'halo5',
-    creator: 'Dhea Fesa',
-    postDate: 'May 26, 2024',
-    title: 'Example 2',
-    content: 'Lorem ipsum dolor sit amet consectetur. Viverra vitae proin eget malesuada sollicitudin in at ridiculus purus. Velit morbi consequat nisi tempus et augue sem justo morbi ... ',
-    category: 'category5',
-    label: '1',
-  },
-  {
-    id: 'halo6',
-    creator: 'Dhea Fesa',
-    postDate: 'May 26, 2024',
-    title: 'Example 3',
-    content: 'Lorem ipsum dolor sit amet consectetur. Viverra vitae proin eget malesuada sollicitudin in at ridiculus purus. Velit morbi consequat nisi tempus et augue sem justo morbi ... ',
-    category: 'category6',
-    label: '1',
-  },
-  {
-    id: 'halo7',
-    creator: 'Dhea Fesa',
-    postDate: 'May 26, 2024',
-    title: 'Example 3',
-    content: 'Lorem ipsum dolor sit amet consectetur. Viverra vitae proin eget malesuada sollicitudin in at ridiculus purus. Velit morbi consequat nisi tempus et augue sem justo morbi ... ',
-    category: 'category7',
-    label: '1',
-  },
-  {
-    id: 'halo8',
-    creator: 'Dhea Fesa',
-    postDate: 'May 26, 2024',
-    title: 'Example 3',
-    content: 'Lorem ipsum dolor sit amet consectetur. Viverra vitae proin eget malesuada sollicitudin in at ridiculus purus. Velit morbi consequat nisi tempus et augue sem justo morbi ... ',
-    category: 'category8',
-    label: '1',
-  },
-  {
-    id: 'halo9',
-    creator: 'Dhea Fesa',
-    postDate: 'May 26, 2024',
-    title: 'Example 3',
-    content: 'Lorem ipsum dolor sit amet consectetur. Viverra vitae proin eget malesuada sollicitudin in at ridiculus purus. Velit morbi consequat nisi tempus et augue sem justo morbi ... ',
-    category: 'category9',
-    label: '1',
-  },
-];
-
-const categories = [...new Set(discussionList.map((discussionItem) => discussionItem.category))];
+import {
+  asyncReceiveDiscussions,
+  asyncToogleLikeDiscussion,
+  asyncToogleNeutralizeDiscussion,
+  asyncToogleUnlikeDiscussion,
+} from '../states/discussions/action';
 
 function DiscussionPage() {
+  const dispatch = useDispatch();
+  const discussions = useSelector((state) => state?.discussions);
+  const users = useSelector((state) => state.users);
+  const authUser = useSelector((state) => state.authUser);
+
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  useEffect(() => {
+    dispatch(asyncReceiveDiscussions());
+  }, [dispatch]);
+
+  const onLike = (id) => {
+    dispatch(asyncToogleLikeDiscussion(id));
+  };
+
+  const onUnlike = (id) => {
+    dispatch(asyncToogleUnlikeDiscussion(id));
+  };
+
+  const onNeutralize = (id) => {
+    dispatch(asyncToogleNeutralizeDiscussion(id));
+  };
+
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const categories = [...new Set(discussions.map((discussion) => discussion.category))];
+
+  const filteredDiscussions = selectedCategory
+    ? discussions.filter((thread) => thread.category === selectedCategory)
+    : discussions;
+
+  const discussionList = filteredDiscussions.map((thread) => ({
+    ...thread,
+    user: users.find((user) => user.id === thread.ownerId),
+    authUser: authUser ? authUser.id : null,
+  }));
+
   return (
     <Box sx={{ pt: 2, pb: { xs: 6, md: 8 } }}>
       <Container maxWidth="lg">
@@ -100,10 +60,15 @@ function DiscussionPage() {
           <Typography variant="h6" color="black">
             Popular Category
           </Typography>
-          <PopularCardList categories={categories} />
+          <PopularCardList categories={categories} onCategorySelect={handleCategorySelect} />
         </Box>
         <Title title="Discussion Available" textAlign="left" />
-        <DiscussionCardList discussions={discussionList} />
+        <DiscussionCardList
+          discussions={discussionList}
+          like={onLike}
+          unlike={onUnlike}
+          neutralize={onNeutralize}
+        />
       </Container>
     </Box>
   );
