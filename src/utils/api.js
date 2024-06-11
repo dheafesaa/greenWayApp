@@ -85,9 +85,9 @@ const api = (() => {
       throw new Error(message);
     }
 
-    const { data: { user } } = responseJson;
+    const { data } = responseJson;
 
-    return user;
+    return data;
   }
 
   async function getAllCampaigns() {
@@ -219,7 +219,7 @@ const api = (() => {
   }
 
   async function toggleLikeDiscussion(id) {
-    const response = await _fetchWithAuth(`${BASE_URL}/discussion/${id}/up-vote`, {
+    const response = await _fetchWithAuth(`${BASE_URL}/discussion/${id}/up-votes`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -239,7 +239,7 @@ const api = (() => {
   }
 
   async function toggleUnlikeDiscussion(id) {
-    const response = await _fetchWithAuth(`${BASE_URL}/discussion/${id}/down-vote`, {
+    const response = await _fetchWithAuth(`${BASE_URL}/discussion/${id}/down-votes`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -259,7 +259,7 @@ const api = (() => {
   }
 
   async function toggleNeutralizeDiscussion(id) {
-    const response = await _fetchWithAuth(`${BASE_URL}/discussion/${id}/neutral-vote`, {
+    const response = await _fetchWithAuth(`${BASE_URL}/discussion/${id}/netral-votes`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

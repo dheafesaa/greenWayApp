@@ -18,8 +18,11 @@ import DiscussionPage from './pages/DiscussionPage';
 import AddDiscussionPage from './pages/AddDiscussionPage';
 
 function App() {
-  const authUser = useSelector((state) => state.authUser);
-  const isPreload = useSelector((state) => state.isPreload);
+  const {
+    authUser = null,
+    isPreload = false,
+  } = useSelector((states) => states);
+
   const location = useLocation();
 
   const dispatch = useDispatch();
