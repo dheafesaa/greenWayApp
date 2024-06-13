@@ -12,6 +12,7 @@ import detailDestinationReducer from './detailDestination/reducer';
 import detailCampaignReducer from './detailCampaign/reducer';
 import discussionsReducer from './discussions/reducer';
 import discussionNewReducer from './discussionNew/reducer';
+import detailDiscussionReducer from './detailDiscussion/reducer';
 
 const store = configureStore({
   reducer: {
@@ -28,6 +29,7 @@ const store = configureStore({
     detailCampaign: detailCampaignReducer,
     discussions: discussionsReducer,
     discussionNew: discussionNewReducer,
+    detailDiscussion: detailDiscussionReducer,
   },
 });
 
