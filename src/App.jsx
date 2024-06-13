@@ -16,6 +16,7 @@ import DetailCampaignPage from './pages/DetailCampaignPage';
 import DetailDestinationPage from './pages/DetailDestinationPage';
 import DiscussionPage from './pages/DiscussionPage';
 import AddDiscussionPage from './pages/AddDiscussionPage';
+import DetailDiscussionPage from './pages/DetailDiscussionPage';
 
 function App() {
   const {
@@ -57,6 +58,7 @@ function App() {
           <Route path="/destinations/:id" element={<DetailDestinationPage />} />
           <Route path="/discussions" element={<DiscussionPage />} />
           <Route path="/discussions/add" element={<AddDiscussionPage />} />
+          <Route path="/discussions/:id" element={<DetailDiscussionPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
