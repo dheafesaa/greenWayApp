@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Box, Container, useTheme, useMediaQuery,
-} from '@mui/material';
-import { asyncReceiveCampaigns } from '../states/campaigns/action';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import Header from '../components/molecules/Header';
 import CampaignCardList from '../components/organisms/CampaignCardList';
+import { asyncReceiveCampaigns } from '../states/campaigns/action';
 
 function CampaignPage() {
   const theme = useTheme();

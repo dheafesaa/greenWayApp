@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Grid } from '@mui/material';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import ProfileCardItem, { profileCardItemShape } from '../molecules/ProfileCardItem';
 
 function ProfileCardList({ profileCards }) {

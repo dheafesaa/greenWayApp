@@ -48,7 +48,7 @@ function Footer() {
             </Grid>
           </Grid>
         </Grid>
-        <Box sx={{ mt: 4, textAlign: 'center' }}>
+        <Box sx={{ mt: 6, textAlign: 'center' }}>
           <Typography variant="body1" color="inherit">
             {'© '}
             {new Date().getFullYear()}

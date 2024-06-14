@@ -1,7 +1,7 @@
 import React from 'react';
-import {
-  Box, InputBase, Paper,
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import Colors from './Colors';
 

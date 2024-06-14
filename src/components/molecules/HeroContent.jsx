@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Box, Typography, useMediaQuery, useTheme,
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 function HeroContent({ title, description }) {
   const theme = useTheme();
