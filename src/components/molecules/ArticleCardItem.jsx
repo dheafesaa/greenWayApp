@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 
 function ArticleCardItem({ picture, title, link }) {
   return (
-    <Box component={Link} to={link}>
+    <Box component={Link} to={link} sx={{ textDecoration: 'none' }}>
       <Card sx={{ borderRadius: '16px' }}>
         <CardActionArea>
           <CardMedia
