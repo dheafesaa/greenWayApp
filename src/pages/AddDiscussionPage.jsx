@@ -2,15 +2,14 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 import Title from '../components/atoms/Title';
 import AddDiscussionInput from '../components/organisms/AddDiscussionInput';
 import { asyncCreateDiscussion } from '../states/discussionNew/action';
+import Alert from '../components/atoms/Alert';
 
 function AddDiscussionPage() {
   const dispatch = useDispatch();
-  const { authUser } = useSelector((state) => state);
+  const authUser = useSelector((state) => state.authUser);
 
   const onAddDiscussion = (title, category, body) => {
     dispatch(asyncCreateDiscussion(title, category, body));
@@ -25,10 +24,10 @@ function AddDiscussionPage() {
             <AddDiscussionInput addDiscussion={onAddDiscussion} />
           </>
         ) : (
-          <Alert severity="warning">
-            <AlertTitle>Permission Required</AlertTitle>
-            Please login or create an account to start a new discussion!
-          </Alert>
+          <Alert
+            title="Permission Required"
+            body="Please login or create an account to start a new discussion!"
+          />
         )}
       </Container>
     </Box>

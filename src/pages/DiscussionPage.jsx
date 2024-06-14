@@ -13,6 +13,7 @@ import {
   asyncToogleNeutralizeDiscussion,
   asyncToogleUnlikeDiscussion,
 } from '../states/discussions/action';
+import Alert from '../components/atoms/Alert';
 
 function DiscussionPage() {
   const dispatch = useDispatch();
@@ -46,7 +47,9 @@ function DiscussionPage() {
   ];
 
   const filteredDiscussions = selectedCategory
-    ? discussions.filter((discussion) => discussion.category === selectedCategory)
+    ? discussions.filter(
+      (discussion) => discussion.category === selectedCategory,
+    )
     : discussions;
 
   const discussionList = filteredDiscussions.map((discussion) => ({
@@ -67,7 +70,15 @@ function DiscussionPage() {
           />
         </Box>
         <Title title="Discussion Available" textAlign="left" />
-        {authUser?.id && <AddButton link="/discussions/add" />}
+        {authUser?.id ? (
+          <AddButton link="/discussions/add" />
+        ) : (
+          <Alert
+            severity="info"
+            title="Hold Up!"
+            body="You need to login or create a new account to start a discussion."
+          />
+        )}
         <DiscussionCardList
           discussions={discussionList}
           like={onLike}

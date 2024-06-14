@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import AlertMUI from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 
-function Alert({ title, body }) {
+function Alert({ severity, title, body }) {
   return (
-    <AlertMUI severity="warning">
+    <AlertMUI severity={severity}>
       <AlertTitle>{title}</AlertTitle>
       {body}
     </AlertMUI>
@@ -13,12 +13,14 @@ function Alert({ title, body }) {
 }
 
 Alert.propTypes = {
+  severity: PropTypes.string,
   title: PropTypes.string,
   body: PropTypes.string.isRequired,
 
 };
 
 Alert.defaultProps = {
+  severity: 'warning',
   title: '',
 };
 

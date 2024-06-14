@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
+import Alert from '../atoms/Alert';
 import CardImage from '../atoms/CardImage';
 import DetailCardItem from '../molecules/DetailCardItem';
 import HeaderDetail from '../molecules/HeaderDetail';
 
 function DetailCampaign({
-  id, picture, name, location, date, link, description,
+  id, picture, name, location, date, link, description, authUser,
 }) {
   return (
     <Box sx={{ flexGrow: 1, pb: 4 }}>
@@ -14,7 +15,14 @@ function DetailCampaign({
       <HeaderDetail location={location} title={name} />
       <DetailCardItem title="ID Campaign" content={id} />
       <DetailCardItem title="Time Periode" content={date} />
-      <DetailCardItem title="Link Enrollment" content="Click Me!" link={link} isLink />
+      {authUser ? (
+        <DetailCardItem title="Link Enrollment" content="Click Me!" link={link} isLink />
+      ) : (
+        <DetailCardItem
+          title="Link Enrollment"
+          content={<Alert title="Permission Required" body="Please login or create an account to join campaign!" />}
+        />
+      )}
       <DetailCardItem title="Description" content={description} />
     </Box>
   );
@@ -28,6 +36,7 @@ DetailCampaign.propTypes = {
   date: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
+  authUser: PropTypes.string.isRequired,
 };
 
 export default DetailCampaign;

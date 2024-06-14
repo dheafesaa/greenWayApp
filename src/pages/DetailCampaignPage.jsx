@@ -9,6 +9,7 @@ import { asyncReceiveDetailCampaign } from '../states/detailCampaign/action';
 function DetailCampaignPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const authUser = useSelector((state) => state.authUser);
   const detailCampaign = useSelector((state) => state?.detailCampaign);
 
   useEffect(() => {
@@ -21,6 +22,7 @@ function DetailCampaignPage() {
         {detailCampaign && (
         <DetailCampaign
           {...detailCampaign}
+          authUser={authUser}
         />
         )}
       </Container>
