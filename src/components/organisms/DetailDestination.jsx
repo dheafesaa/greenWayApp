@@ -10,7 +10,7 @@ function DetailDestination({
 }) {
   return (
     <Box sx={{ flexGrow: 1, pb: 4 }}>
-      <CardImage src={photo} alt={name} borderRadius />
+      <CardImage src={photo} alt={name} borderRadius maxHeight={{ xs: '100%', md: '600px' }} />
       <HeaderDetail location={location} title={name} />
       {idCampaign && (
         <DetailCardItem

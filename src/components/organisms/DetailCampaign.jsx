@@ -11,7 +11,7 @@ function DetailCampaign({
 }) {
   return (
     <Box sx={{ flexGrow: 1, pb: 4 }}>
-      <CardImage src={picture} alt={name} borderRadius />
+      <CardImage src={picture} alt={name} borderRadius maxHeight={{ xs: '100%', md: '600px' }} />
       <HeaderDetail location={location} title={name} />
       <DetailCardItem title="ID Campaign" content={id} />
       <DetailCardItem title="Time Periode" content={date} />
