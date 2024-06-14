@@ -23,6 +23,8 @@ function DetailCardItem({
         {content}
       </Button>
     );
+  } else if (React.isValidElement(content)) {
+    renderedContent = content;
   } else {
     renderedContent = <Typography variant="body1">{content}</Typography>;
   }
@@ -44,7 +46,7 @@ function DetailCardItem({
 
 DetailCardItem.propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
+  content: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   isLink: PropTypes.bool,
   link: PropTypes.string,
   isButton: PropTypes.bool,
