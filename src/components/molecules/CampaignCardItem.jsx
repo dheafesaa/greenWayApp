@@ -51,13 +51,14 @@ function CampaignCardItem({
           color={Colors.white}
           fontWeight="bold"
           sx={{
+            marginBottom: 1,
             textDecoration: 'none',
           }}
         >
           {name}
         </Typography>
         <Typography
-          variant="body2"
+          variant="body1"
           color={Colors.white}
           sx={{ display: 'flex', alignItems: 'center' }}
         >
