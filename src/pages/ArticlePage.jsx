@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import Header from '../components/molecules/Header';
+import Header from '../components/atoms/Header';
 import ArticleCardList from '../components/organisms/ArticleCardList';
 import { asyncReceiveArticles } from '../states/articles/action';
 

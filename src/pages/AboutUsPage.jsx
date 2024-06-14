@@ -6,7 +6,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Title from '../components/atoms/Title';
 import ProfileCardList from '../components/organisms/ProfileCardList';
-import Header from '../components/molecules/Header';
+import Header from '../components/atoms/Header';
 import AboutGreenWay from '../components/organisms/AboutGreenWay';
 import { asyncReceiveAboutUs } from '../states/aboutUS/action';
 

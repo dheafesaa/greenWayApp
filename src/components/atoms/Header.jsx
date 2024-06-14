@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
-import Title from '../atoms/Title';
-import Subtitle from '../atoms/Subtitle';
-import Colors from '../atoms/Colors';
+import Title from './Title';
+import Subtitle from './Subtitle';
+import Colors from './Colors';
 
 function Header({ title, subtitle, color }) {
   return (

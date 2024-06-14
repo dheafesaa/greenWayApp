@@ -4,8 +4,8 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import Header from '../components/atoms/Header';
 import Search from '../components/atoms/Search';
-import Header from '../components/molecules/Header';
 import DestinationCardList from '../components/organisms/DestinationCardList';
 import { asyncReceiveDestinations } from '../states/destinations/action';
 

@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import CardImage from '../atoms/CardImage';
+import HeaderDetail from '../atoms/HeaderDetail';
 import DetailCardItem from '../molecules/DetailCardItem';
-import HeaderDetail from '../molecules/HeaderDetail';
 
 function DetailDestination({
   idCampaign, photo, name, location, description,

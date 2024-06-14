@@ -7,7 +7,7 @@ import RegisterPage from './pages/RegisterPage';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncUnsetAuthUser } from './states/authUser/action';
 import Navbar from './components/organisms/Navbar';
-import Footer from './components/molecules/Footer';
+import Footer from './components/organisms/Footer';
 import ArticlePage from './pages/ArticlePage';
 import DestinationPage from './pages/DestinationPage';
 import AboutUsPage from './pages/AboutUsPage';
