@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, Container } from '@mui/material';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
 import HeroLayout from '../components/organisms/HeroLayout';
 import CategoryCardList from '../components/organisms/CategoryCardList';
 import ProductLayout from '../components/organisms/ProductLayout';
@@ -8,10 +9,9 @@ import PurposeCardList from '../components/organisms/PurposeCardList';
 import CampaignCardList from '../components/organisms/CampaignCardList';
 import TestimoniCardList from '../components/organisms/TestimoniCardList';
 import CommunityLayout from '../components/organisms/CommunityLayout';
-import { asyncPopulateCampaignsAndReviews } from '../states/shared/action';
 import Title from '../components/atoms/Title';
-import SeeAllButton from '../components/atoms/SeeAllButton';
 import CardVideo from '../components/atoms/CardVideo';
+import { asyncPopulateCampaignsAndReviews } from '../states/shared/action';
 
 function HomePage() {
   const dispatch = useDispatch();
@@ -76,7 +76,6 @@ function HomePage() {
         </Box>
         <Box py={6}>
           <Title title="Campaign" />
-          <SeeAllButton to="/campaigns" />
           <CampaignCardList campaignCards={limitedCampaigns} />
         </Box>
         <Box py={6}>
