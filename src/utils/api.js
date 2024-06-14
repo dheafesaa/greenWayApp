@@ -401,6 +401,28 @@ const api = (() => {
     return newComment;
   }
 
+  async function createCommentDestination(idDestination, comment) {
+    const response = await _fetchWithAuth(`${BASE_URL}/destination/comment`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ idDestination, comment }),
+    });
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: { comment: newComment } } = responseJson;
+
+    return newComment;
+  }
+
   return {
     putAccessToken,
     getAccessToken,
@@ -414,6 +436,7 @@ const api = (() => {
     createDiscussion,
     getAllAboutUs,
     getDetailDestination,
+    createCommentDestination,
     getDetailCampaign,
     getAllDiscussions,
     toggleLikeDiscussion,
