@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Box, Card, CardContent, Avatar,
-  Typography,
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Avatar from '@mui/material/Avatar';
+import Typography from '@mui/material/Typography';
 import { AiOutlineLinkedin } from 'react-icons/ai';
 import { VscGithub } from 'react-icons/vsc';
 import { MdOutlineMail } from 'react-icons/md';

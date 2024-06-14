@@ -1,10 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { Box } from '@mui/material';
+import Box from '@mui/material/Box';
+import AuthContent from '../components/molecules/AuthContent';
 import RegisterInput from '../components/organisms/RegisterInput';
 import { asyncRegisterUser } from '../states/users/action';
-import AuthContent from '../components/molecules/AuthContent';
 
 function RegisterPage() {
   const navigate = useNavigate();

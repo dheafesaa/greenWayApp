@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Box, Container, useTheme, useMediaQuery,
-} from '@mui/material';
-import { asyncReceiveDestinations } from '../states/destinations/action';
-import DestinationCardList from '../components/organisms/DestinationCardList';
-import Header from '../components/molecules/Header';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
 import Search from '../components/atoms/Search';
+import Header from '../components/molecules/Header';
+import DestinationCardList from '../components/organisms/DestinationCardList';
+import { asyncReceiveDestinations } from '../states/destinations/action';
 
 function DestinationPage() {
   const theme = useTheme();

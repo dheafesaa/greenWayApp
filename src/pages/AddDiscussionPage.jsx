@@ -2,10 +2,10 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
+import Alert from '../components/atoms/Alert';
 import Title from '../components/atoms/Title';
 import AddDiscussionInput from '../components/organisms/AddDiscussionInput';
 import { asyncCreateDiscussion } from '../states/discussionNew/action';
-import Alert from '../components/atoms/Alert';
 
 function AddDiscussionPage() {
   const dispatch = useDispatch();

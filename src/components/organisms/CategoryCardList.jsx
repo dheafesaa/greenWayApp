@@ -1,8 +1,9 @@
 import React from 'react';
-import { Box, Grid } from '@mui/material';
 import PropTypes from 'prop-types';
-import CategoryCardItem from '../molecules/CategoryCardItem';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 import Colors from '../atoms/Colors';
+import CategoryCardItem from '../molecules/CategoryCardItem';
 
 function CategoryCardList({ categoryCards }) {
   return (

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { Typography } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import Colors from '../atoms/Colors';
 
 function TestimoniCardItem({

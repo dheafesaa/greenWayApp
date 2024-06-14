@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import LocationOnRoundedIcon from '@mui/icons-material/LocationOnRounded';
-import { Box, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import Typography from '@mui/material/Typography';
 import Colors from '../atoms/Colors';
 
 function DestinationCardItem({

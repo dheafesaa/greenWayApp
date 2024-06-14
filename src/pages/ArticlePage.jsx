@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  Box, Container, useMediaQuery, useTheme,
-} from '@mui/material';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import Header from '../components/molecules/Header';
 import ArticleCardList from '../components/organisms/ArticleCardList';
 import { asyncReceiveArticles } from '../states/articles/action';
-import Header from '../components/molecules/Header';
 
 function ArticlePage() {
   const theme = useTheme();
