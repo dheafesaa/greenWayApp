@@ -11,7 +11,14 @@ import TestimoniCardList from '../components/organisms/TestimoniCardList';
 import CommunityLayout from '../components/organisms/CommunityLayout';
 import Title from '../components/atoms/Title';
 import CardVideo from '../components/atoms/CardVideo';
-import { categoryCards, purposeCards } from '../utils/data';
+import {
+  categoryCards,
+  imgCommunity,
+  imgProduct,
+  imgWelcomeHome,
+  purposeCards,
+  videoWonderfulIndonesia,
+} from '../utils/data';
 import { asyncPopulateCampaignsAndReviews } from '../states/shared/action';
 
 function HomePage() {
@@ -33,7 +40,7 @@ function HomePage() {
           description="Welcome to a new era of travel where adventure meets environmental stewardship.
         Your Gateway to Sustainable Exploration in Indonesia! Start your journey with us and traverse
         Indonesia in a more responsible, eco-conscious manner."
-          imageUrl="/src/assets/landing-1.png"
+          imageUrl={imgWelcomeHome}
         />
         <CategoryCardList categoryCards={categoryCards} />
         <Box py={6}>
@@ -42,7 +49,7 @@ function HomePage() {
             description="Welcome to a new era of travel where adventure meets environmental
              stewardship. Your Gateway to Sustainable Exploration in Indonesia!
              Start your journey with us and traverse Indonesia in a more responsible, eco-conscious manner."
-            imageUrl="/src/assets/subContent.png"
+            imageUrl={imgProduct}
           />
         </Box>
         <Box py={{ xs: 0, md: 6 }}>
@@ -58,17 +65,14 @@ function HomePage() {
         </Box>
         <Box py={6}>
           <Title title="Nature of Indonesia" />
-          <CardVideo
-            src="/src/assets/Wonderful Indonesia - Nature.mp4"
-            alt="Wonderful Indonesia"
-          />
+          <CardVideo src={videoWonderfulIndonesia} alt="Wonderful Indonesia" />
         </Box>
         <Box py={6}>
           <CommunityLayout
             title="Community Is Calling, No Need to Stalling"
             description="Join our discussion community! Discover new ideas and exchange experience
            with thousands of members. Let's join now!"
-            imageUrl="/src/assets/communityLayout.png"
+            imageUrl={imgCommunity}
           />
         </Box>
       </Container>

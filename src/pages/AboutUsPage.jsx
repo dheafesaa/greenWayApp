@@ -9,6 +9,7 @@ import ProfileCardList from '../components/organisms/ProfileCardList';
 import Header from '../components/atoms/Header';
 import AboutGreenWay from '../components/organisms/AboutGreenWay';
 import { asyncReceiveAboutUs } from '../states/aboutUS/action';
+import { imgAboutUs } from '../utils/data';
 
 function AboutUsPage() {
   const theme = useTheme();
@@ -26,7 +27,7 @@ function AboutUsPage() {
       <Container maxWidth="lg">
         <Title title="About Us" />
         <AboutGreenWay
-          imageUrl="/src/assets/imgAboutUs.png"
+          imageUrl={imgAboutUs}
           description="Welcome to GreenWay, where our passion for the environment meets the joy of discovery.
         At GreenWay, we are dedicated to promoting Eco-friendly tourism while introducing a myriad of captivating
         travel destinations to everyone. Our website is designed to inspire and educate, featuring engaging campaigns
