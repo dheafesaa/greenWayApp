@@ -22,7 +22,7 @@ function DetailCampaignPage() {
         {detailCampaign && (
         <DetailCampaign
           {...detailCampaign}
-          authUser={authUser}
+          authUser={authUser ? authUser.id : null}
         />
         )}
       </Container>
