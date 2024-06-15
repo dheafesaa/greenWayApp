@@ -2,9 +2,9 @@ import api from '../../utils/api';
 
 const ActionType = {
   RECEIVE_DETAIL_DISCUSSION: 'RECEIVE_DETAIL_DISCUSSION',
-  TOGGLE_LIKE_DISCUSSION: 'TOGGLE_LIKE_DISCUSSION',
-  TOGGLE_UNLIKE_DISCUSSION: 'TOGGLE_UNLIKE_DISCUSSION',
-  TOGGLE_NEUTRALIZE_DISCUSSION: 'TOGGLE_NEUTRALIZE_DISCUSSION',
+  TOGGLE_LIKE_DISCUSSION_DETAIL: 'TOGGLE_LIKE_DISCUSSION_DETAIL',
+  TOGGLE_UNLIKE_DISCUSSION_DETAIL: 'TOGGLE_UNLIKE_DISCUSSION_DETAIL',
+  TOGGLE_NEUTRALIZE_DISCUSSION_DETAIL: 'TOGGLE_NEUTRALIZE_DISCUSSION_DETAIL',
   TOGGLE_LIKE_COMMENT: 'TOGGLE_LIKE_COMMENT',
   TOGGLE_UNLIKE_COMMENT: 'TOGGLE_UNLIKE_COMMENT',
   TOGGLE_NEUTRALIZE_COMMENT: 'TOGGLE_NEUTRALIZE_COMMENT',
@@ -20,9 +20,9 @@ function receiveDetailDiscussion(detailDiscussion) {
   };
 }
 
-function toggleLikeDiscussion({ discussionId, userId }) {
+function toggleLikeDiscussionDetail({ discussionId, userId }) {
   return {
-    type: ActionType.TOGGLE_LIKE_DISCUSSION,
+    type: ActionType.TOGGLE_LIKE_DISCUSSION_DETAIL,
     payload: {
       discussionId,
       userId,
@@ -30,9 +30,9 @@ function toggleLikeDiscussion({ discussionId, userId }) {
   };
 }
 
-function toggleUnlikeDiscussion({ discussionId, userId }) {
+function toggleUnlikeDiscussionDetail({ discussionId, userId }) {
   return {
-    type: ActionType.TOGGLE_UNLIKE_DISCUSSION,
+    type: ActionType.TOGGLE_UNLIKE_DISCUSSION_DETAIL,
     payload: {
       discussionId,
       userId,
@@ -40,9 +40,9 @@ function toggleUnlikeDiscussion({ discussionId, userId }) {
   };
 }
 
-function toggleNeutralizeDiscussion({ discussionId, userId }) {
+function toggleNeutralizeDiscussionDetail({ discussionId, userId }) {
   return {
-    type: ActionType.TOGGLE_NEUTRALIZE_DISCUSSION,
+    type: ActionType.TOGGLE_NEUTRALIZE_DISCUSSION_DETAIL,
     payload: {
       discussionId,
       userId,
@@ -110,12 +110,12 @@ function asyncToggleLikeDetailDiscussion(discussionId) {
       alert('You must be logged in to vote.');
       return;
     }
-    dispatch(toggleLikeDiscussion({ discussionId, userId: authUser.id }));
+    dispatch(toggleLikeDiscussionDetail({ discussionId, userId: authUser.id }));
     try {
-      await api.toggleLikeDiscussion(discussionId);
+      await api.toggleLikeDiscussionDetail(discussionId);
     } catch (error) {
       alert(error.message);
-      dispatch(toggleLikeDiscussion({ discussionId, userId: authUser.id }));
+      dispatch(toggleLikeDiscussionDetail({ discussionId, userId: authUser.id }));
     }
   };
 }
@@ -127,12 +127,12 @@ function asyncToggleUnlikeDetailDiscussion(discussionId) {
       alert('You must be logged in to vote.');
       return;
     }
-    dispatch(toggleUnlikeDiscussion({ discussionId, userId: authUser.id }));
+    dispatch(toggleUnlikeDiscussionDetail({ discussionId, userId: authUser.id }));
     try {
-      await api.toggleUnlikeDiscussion(discussionId);
+      await api.toggleUnlikeDiscussionDetail(discussionId);
     } catch (error) {
       alert(error.message);
-      dispatch(toggleUnlikeDiscussion({ discussionId, userId: authUser.id }));
+      dispatch(toggleUnlikeDiscussionDetail({ discussionId, userId: authUser.id }));
     }
   };
 }
@@ -140,12 +140,12 @@ function asyncToggleUnlikeDetailDiscussion(discussionId) {
 function asyncToggleNeutralizeDetailDiscussion(discussionId) {
   return async (dispatch, getState) => {
     const { authUser } = getState();
-    dispatch(toggleNeutralizeDiscussion({ discussionId, userId: authUser.id }));
+    dispatch(toggleNeutralizeDiscussionDetail({ discussionId, userId: authUser.id }));
     try {
-      await api.toggleNeutralizeDiscussion(discussionId);
+      await api.toggleNeutralizeDiscussionDetail(discussionId);
     } catch (error) {
       alert(error.message);
-      dispatch(toggleNeutralizeDiscussion({ discussionId, userId: authUser.id }));
+      dispatch(toggleNeutralizeDiscussionDetail({ discussionId, userId: authUser.id }));
     }
   };
 }
