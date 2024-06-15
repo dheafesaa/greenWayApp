@@ -14,13 +14,13 @@ function CardImage({
         width: '100%',
         height: '100%',
         borderRadius: borderRadius ? '16px' : 0,
-        maxHeight,
       }}
     >
       <CardMedia
         component="img"
         src={src}
         alt={alt}
+        sx={{ maxHeight }}
       />
     </Card>
   );
@@ -30,7 +30,10 @@ CardImage.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   borderRadius: PropTypes.bool,
-  maxHeight: PropTypes.string,
+  maxHeight: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
+  ]),
 };
 
 CardImage.defaultProps = {

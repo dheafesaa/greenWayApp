@@ -14,14 +14,16 @@ function DetailDestinationPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authUser);
-  const detailDestination = useSelector((state) => state.detailDestination);
+  const detailDestination = useSelector((state) => state.detailDestination.detailDestination);
 
   useEffect(() => {
     dispatch(asyncReceiveDetailDestination(id));
   }, [id, dispatch]);
 
   const onSubmitComment = (comment) => {
-    dispatch(asyncCreateCommentDestination(detailDestination.idDestination, comment));
+    if (detailDestination) {
+      dispatch(asyncCreateCommentDestination(detailDestination.idDestination, comment));
+    }
   };
 
   if (!detailDestination) {
@@ -31,24 +33,20 @@ function DetailDestinationPage() {
   return (
     <Box sx={{ pt: 2, pb: { xs: 6, md: 8 } }}>
       <Container maxWidth="lg">
-        <DetailDestination
-          {...detailDestination}
-        />
+        <DetailDestination {...detailDestination} />
         <Box py={4}>
           <Typography variant="h4">
-            Comments
-            {' '}
-            (
-            {detailDestination?.comments?.length}
+            Comments (
+            {detailDestination.comments.length}
             )
           </Typography>
           {authUser ? (
             <AddCommentDestination onSubmit={onSubmitComment} />
           ) : (
-            <Alert title="Permission Required" body="Please login or create an account to start a new discussion!" />
+            <Alert title="Permission Required" body="Please login or create an account to start a new comment!" />
           )}
           <CommentDestinationCardList
-            comments={detailDestination.comments || []}
+            comments={detailDestination.comments}
           />
         </Box>
       </Container>

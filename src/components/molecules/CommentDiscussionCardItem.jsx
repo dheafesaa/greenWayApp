@@ -16,18 +16,21 @@ import ActionButton from '../atoms/ActionButton';
 import { postedAt } from '../../utils';
 
 function CommentDiscussionCardItem({
-  id,
-  photo,
-  name,
-  createdAt,
-  comment,
-  upVotesBy,
-  downVotesBy,
+  comment = {},
   like,
   unlike,
-  authUser,
   neutralize,
+  authUser,
 }) {
+  const {
+    id = '',
+    owner = { idUser: '', name: '', photo: '' },
+    comment: commentText = '',
+    createdAt = '',
+    upVotesBy = [],
+    downVotesBy = [],
+  } = comment;
+
   const isCommentLiked = upVotesBy.includes(authUser);
   const isCommentUnliked = downVotesBy.includes(authUser);
 
@@ -58,7 +61,7 @@ function CommentDiscussionCardItem({
       <CardContent>
         <Box display="flex" alignItems="center" marginBottom={2}>
           <Avatar
-            src={photo}
+            src={owner.photo}
             sx={{ width: '4rem', height: '4rem', marginRight: 2 }}
           />
           <Box>
@@ -68,7 +71,7 @@ function CommentDiscussionCardItem({
               fontWeight="bold"
               sx={{ mb: 0 }}
             >
-              {name}
+              {owner.name}
             </Typography>
             <Typography variant="body1" color="textSecondary">
               Posted At
@@ -78,7 +81,7 @@ function CommentDiscussionCardItem({
           </Box>
         </Box>
         <Typography variant="body1" paragraph>
-          {comment}
+          {commentText}
         </Typography>
         <Box display="flex" alignItems="center" gap={2} marginTop={2}>
           <ActionButton
@@ -101,17 +104,31 @@ function CommentDiscussionCardItem({
 
 const commentDiscussionItemShape = {
   id: PropTypes.string.isRequired,
-  discussionId: PropTypes.string.isRequired,
+  owner: PropTypes.shape({
+    idUser: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    photo: PropTypes.string.isRequired,
+  }).isRequired,
+  comment: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   authUser: PropTypes.string,
 };
 
 CommentDiscussionCardItem.propTypes = {
-  ...commentDiscussionItemShape,
-  like: PropTypes.func.isRequired,
-  unlike: PropTypes.func.isRequired,
-  neutralize: PropTypes.func.isRequired,
+  comment: PropTypes.shape(commentDiscussionItemShape).isRequired,
+  like: PropTypes.func,
+  unlike: PropTypes.func,
+  neutralize: PropTypes.func,
+  authUser: PropTypes.string,
+};
+
+CommentDiscussionCardItem.defaultProps = {
+  like: null,
+  unlike: null,
+  neutralize: () => {},
+  authUser: '',
 };
 
 export { commentDiscussionItemShape };

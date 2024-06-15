@@ -118,7 +118,7 @@ const detailDiscussionReducer = (state = initialState, action = {}) => {
     case ActionType.CREATE_COMMENT_DISCUSSION:
       return {
         ...state,
-        detailThread: {
+        detailDiscussion: {
           ...state.detailDiscussion,
           comments: [action.payload.comment, ...state.detailDiscussion.comments],
         },

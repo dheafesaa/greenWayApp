@@ -19,7 +19,7 @@ import {
   asyncToggleUnlikeDetailDiscussion,
 } from '../states/detailDiscussion/action';
 import CommentDiscussionCardList from '../components/organisms/CommentDiscussionCardList';
-import AddCommentInput from '../components/organisms/AddCommentInput';
+import AddCommentDiscussion from '../components/organisms/AddCommentDiscussion';
 
 function DetailDiscussionPage() {
   const { id } = useParams();
@@ -83,7 +83,7 @@ function DetailDiscussionPage() {
             )
           </Typography>
           {authUser ? (
-            <AddCommentInput onSubmit={onSubmitComment} />
+            <AddCommentDiscussion onSubmit={onSubmitComment} />
           ) : (
             <Alert severity="warning">
               <AlertTitle>Permission Required</AlertTitle>
@@ -98,7 +98,6 @@ function DetailDiscussionPage() {
             neutralize={(commentId) => onNeutralizeComment(commentId)}
           />
         </Box>
-
       </Container>
     </Box>
   );
