@@ -13,7 +13,7 @@ function CommentDiscussionCardList({
         {comments.map((comment) => (
           <Grid item xs={12} key={comment.id}>
             <CommentDiscussionCardItem
-              {...comment}
+              comment={comment}
               like={like}
               unlike={unlike}
               neutralize={neutralize}
@@ -27,7 +27,7 @@ function CommentDiscussionCardList({
 }
 
 CommentDiscussionCardList.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.shape(commentDiscussionItemShape)).isRequired,
+  comments: PropTypes.arrayOf(PropTypes.shape(commentDiscussionItemShape)),
   like: PropTypes.func.isRequired,
   unlike: PropTypes.func.isRequired,
   neutralize: PropTypes.func.isRequired,
@@ -35,6 +35,7 @@ CommentDiscussionCardList.propTypes = {
 };
 
 CommentDiscussionCardList.defaultProps = {
+  comments: [],
   authUser: null,
 };
 

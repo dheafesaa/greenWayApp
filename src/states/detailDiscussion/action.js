@@ -92,10 +92,10 @@ function createCommentDiscussion(comment) {
   };
 }
 
-function asyncReceiveDetailDiscussion(idDiscussion) {
+function asyncReceiveDetailDiscussion(discussionId) {
   return async (dispatch) => {
     try {
-      const detailDiscussionData = await api.getDetailDiscussion(idDiscussion);
+      const detailDiscussionData = await api.getDetailDiscussion(discussionId);
       dispatch(receiveDetailDiscussion(detailDiscussionData));
     } catch (error) {
       alert(error.message);
@@ -197,10 +197,10 @@ function asyncToggleNeutralizeComment(discussionId, commentId) {
   };
 }
 
-function asyncCreateCommentDiscussion(idDiscussion, comment) {
+function asyncCreateCommentDiscussion(discussionId, comment) {
   return async (dispatch) => {
     try {
-      const newComment = await api.createCommentDiscussion(idDiscussion, comment);
+      const newComment = await api.createCommentDiscussion(discussionId, comment);
       dispatch(createCommentDiscussion(newComment));
     } catch (error) {
       alert(error.message);

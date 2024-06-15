@@ -7,15 +7,21 @@ const initialState = {
 const detailDestinationReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case ActionType.RECEIVE_DETAIL_DESTINATION:
-      return action.payload.detailDestination;
-    case ActionType.CREATE_COMMENT_DESTINATION:
       return {
         ...state,
-        detailThread: {
-          ...state.detailDestination,
-          comments: [action.payload.comment, ...state.detailDestination.comments],
-        },
+        detailDestination: action.payload,
       };
+    case ActionType.CREATE_COMMENT_DESTINATION:
+      if (state.detailDestination) {
+        return {
+          ...state,
+          detailDestination: {
+            ...state.detailDestination,
+            comments: [action.payload, ...state.detailDestination.comments],
+          },
+        };
+      }
+      return state;
     default:
       return state;
   }

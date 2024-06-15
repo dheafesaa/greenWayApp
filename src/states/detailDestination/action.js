@@ -8,36 +8,32 @@ const ActionType = {
 function receiveDetailDestination(detailDestination) {
   return {
     type: ActionType.RECEIVE_DETAIL_DESTINATION,
-    payload: {
-      detailDestination,
-    },
+    payload: detailDestination,
   };
 }
 
 function createCommentDestination(comment) {
   return {
     type: ActionType.CREATE_COMMENT_DESTINATION,
-    payload: {
-      comment,
-    },
+    payload: comment,
   };
 }
 
-function asyncReceiveDetailDestination(idDestination) {
+function asyncReceiveDetailDestination(destinationId) {
   return async (dispatch) => {
     try {
-      const destinationsData = await api.getDetailDestination(idDestination);
-      dispatch(receiveDetailDestination(destinationsData));
+      const detailDestinationData = await api.getDetailDestination(destinationId);
+      dispatch(receiveDetailDestination(detailDestinationData));
     } catch (error) {
       alert(error.message);
     }
   };
 }
 
-function asyncCreateCommentDestination(idDestination, comment) {
+function asyncCreateCommentDestination(destinationId, comment) {
   return async (dispatch) => {
     try {
-      const newComment = await api.createCommentDestination(idDestination, comment);
+      const newComment = await api.createCommentDestination(destinationId, comment);
       dispatch(createCommentDestination(newComment));
     } catch (error) {
       alert(error.message);

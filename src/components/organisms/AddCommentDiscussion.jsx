@@ -5,13 +5,13 @@ import Button from '@mui/material/Button';
 import useInput from '../../hooks/useInput';
 import InputText from '../atoms/InputText';
 
-function AddCommentInput({ onSubmit }) {
-  const [content, onContentChange] = useInput('');
+function AddCommentDiscussion({ onSubmit }) {
+  const [content, onContentChange, setContent] = useInput('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit(content);
-    onContentChange('');
+    setContent('');
   };
 
   return (
@@ -38,8 +38,8 @@ function AddCommentInput({ onSubmit }) {
   );
 }
 
-AddCommentInput.propTypes = {
+AddCommentDiscussion.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default AddCommentInput;
+export default AddCommentDiscussion;

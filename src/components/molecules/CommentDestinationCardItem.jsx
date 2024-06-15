@@ -9,10 +9,11 @@ import Colors from '../atoms/Colors';
 import { postedAt } from '../../utils';
 
 function CommentDestinationCardItem({
-  photo,
-  name,
-  createdAt,
-  comment,
+  comment: {
+    owner = { idUser: '', name: '', photo: '' },
+    comment: commentText = '',
+    createdAt = '',
+  },
 }) {
   return (
     <Card
@@ -25,7 +26,7 @@ function CommentDestinationCardItem({
       <CardContent>
         <Box display="flex" alignItems="center" marginBottom={2}>
           <Avatar
-            src={photo}
+            src={owner.photo}
             sx={{ width: '4rem', height: '4rem', marginRight: 2 }}
           />
           <Box>
@@ -35,7 +36,7 @@ function CommentDestinationCardItem({
               fontWeight="bold"
               sx={{ mb: 0 }}
             >
-              {name}
+              {owner.name}
             </Typography>
             <Typography variant="body1" color="textSecondary">
               Posted At
@@ -45,7 +46,7 @@ function CommentDestinationCardItem({
           </Box>
         </Box>
         <Typography variant="body1" paragraph sx={{ mb: 0 }}>
-          {comment}
+          {commentText}
         </Typography>
       </CardContent>
     </Card>
@@ -54,14 +55,15 @@ function CommentDestinationCardItem({
 
 const commentDestinationItemShape = {
   id: PropTypes.string.isRequired,
-  discussionId: PropTypes.string.isRequired,
-  upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-  authUser: PropTypes.string,
+  owner: PropTypes.shape({
+    idUser: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    photo: PropTypes.string.isRequired,
+  }).isRequired,
+  comment: PropTypes.string.isRequired,
 };
-
 CommentDestinationCardItem.propTypes = {
-  ...commentDestinationItemShape,
+  comment: PropTypes.shape(commentDestinationItemShape).isRequired,
 };
 
 export { commentDestinationItemShape };

@@ -6,12 +6,12 @@ import useInput from '../../hooks/useInput';
 import InputText from '../atoms/InputText';
 
 function AddCommentDestination({ onSubmit }) {
-  const [content, onContentChange] = useInput('');
+  const [content, onContentChange, setContent] = useInput('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit(content);
-    onContentChange('');
+    setContent('');
   };
 
   return (

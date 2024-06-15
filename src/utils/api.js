@@ -379,13 +379,13 @@ const api = (() => {
     }
   }
 
-  async function createCommentDiscussion(idDiscussion, comment) {
-    const response = await _fetchWithAuth(`${BASE_URL}/discussion/comment`, {
+  async function createCommentDiscussion(discussionId, comment) {
+    const response = await _fetchWithAuth(`${BASE_URL}/discussion/${discussionId}/comment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ idDiscussion, comment }),
+      body: JSON.stringify({ discussionId, comment }),
     });
 
     const responseJson = await response.json();
@@ -401,13 +401,13 @@ const api = (() => {
     return newComment;
   }
 
-  async function createCommentDestination(idDestination, comment) {
-    const response = await _fetchWithAuth(`${BASE_URL}/destination/comment`, {
+  async function createCommentDestination(destinationId, comment) {
+    const response = await _fetchWithAuth(`${BASE_URL}/destination/${destinationId}/comment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ idDestination, comment }),
+      body: JSON.stringify({ destinationId, comment }),
     });
 
     const responseJson = await response.json();

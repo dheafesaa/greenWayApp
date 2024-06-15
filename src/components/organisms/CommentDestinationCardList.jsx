@@ -11,7 +11,7 @@ function CommentDestinationCardList({ comments }) {
         {comments.map((comment) => (
           <Grid item xs={12} key={comment.id}>
             <CommentDestinationCardItem
-              {...comment}
+              comment={comment}
             />
           </Grid>
         ))}
@@ -21,7 +21,11 @@ function CommentDestinationCardList({ comments }) {
 }
 
 CommentDestinationCardList.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.shape(commentDestinationItemShape)).isRequired,
+  comments: PropTypes.arrayOf(PropTypes.shape(commentDestinationItemShape)),
+};
+
+CommentDestinationCardList.defaultProps = {
+  comments: [],
 };
 
 export default CommentDestinationCardList;
