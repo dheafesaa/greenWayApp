@@ -36,7 +36,11 @@ DetailCampaign.propTypes = {
   date: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  authUser: PropTypes.string.isRequired,
+  authUser: PropTypes.string,
+};
+
+DetailCampaign.defaultProps = {
+  authUser: null,
 };
 
 export default DetailCampaign;

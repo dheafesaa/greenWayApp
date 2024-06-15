@@ -145,7 +145,7 @@ const discussionItemShape = {
   id: PropTypes.string.isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
-  user: PropTypes.shape(userShape).isRequired,
+  user: PropTypes.shape(userShape),
   authUser: PropTypes.string,
 };
 

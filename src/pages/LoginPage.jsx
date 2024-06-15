@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import AuthContent from '../components/molecules/AuthContent';
 import LoginInput from '../components/organisms/LoginInput';
 import { asyncSetAuthUser } from '../states/authUser/action';
+import { imgLogin } from '../utils/data';
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function LoginPage() {
     >
       <Box flex={{ xs: '1 1 100%', sm: '1 1 50%' }}>
         <AuthContent
-          src="/src/assets/imgLogin.png"
+          src={imgLogin}
           alt="imgLogin"
           title="Welcome Back!"
           body="&ldquo;Don't just enjoy the beauty of nature, but also love nature by not littering or vandalizing it.&rdquo;"

@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import AuthContent from '../components/molecules/AuthContent';
 import RegisterInput from '../components/organisms/RegisterInput';
 import { asyncRegisterUser } from '../states/users/action';
+import { imgRegister } from '../utils/data';
 
 function RegisterPage() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function RegisterPage() {
     >
       <Box flex={{ xs: '1 1 100%', sm: '1 1 50%' }}>
         <AuthContent
-          src="/src/assets/imgLogin.png"
+          src={imgRegister}
           alt="imgLogin"
           title="Welcome!"
           body="&ldquo;As long as you don't have the subtle feeling of seeing nature, your soul is not alive.&rdquo;"
