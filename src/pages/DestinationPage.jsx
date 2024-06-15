@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+import Alert from '../components/atoms/Alert';
 import Header from '../components/atoms/Header';
 import Search from '../components/atoms/Search';
 import DestinationCardList from '../components/organisms/DestinationCardList';
@@ -14,11 +16,26 @@ function DestinationPage() {
   const isTabletOrDesktop = useMediaQuery(theme.breakpoints.up('sm'));
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const destinations = useSelector((state) => state?.destinations || []);
+  const [filteredDestinations, setFilteredDestinations] = useState(destinations);
+  const [searchKeyword, setSearchKeyword] = useState('');
 
   useEffect(() => {
     dispatch(asyncReceiveDestinations());
   }, [dispatch]);
+
+  useEffect(() => {
+    setFilteredDestinations(
+      destinations.filter((destination) => destination.name
+        .toLowerCase().includes(searchKeyword.toLowerCase())),
+    );
+  }, [destinations, searchKeyword]);
+
+  const handleSearch = (keyword) => {
+    setSearchKeyword(keyword);
+    navigate(`?search=${keyword}`);
+  };
 
   return (
     <Box sx={{ py: { xs: 6, md: 8 } }}>
@@ -42,9 +59,19 @@ function DestinationPage() {
         )}
         />
         <Box mt={4}>
-          <Search />
+          <Search onSearch={handleSearch} />
         </Box>
-        <DestinationCardList destinationCards={destinations} />
+        {filteredDestinations.length > 0 ? (
+          <DestinationCardList destinationCards={filteredDestinations} />
+        ) : (
+          <Box py={4}>
+            <Alert
+              severity="info"
+              title="Information"
+              body="Sorry, no destinations match your search criteria. Please try again with different keywords."
+            />
+          </Box>
+        )}
       </Container>
     </Box>
   );
