@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Alert from '../components/atoms/Alert';
@@ -9,10 +10,12 @@ import { asyncCreateDiscussion } from '../states/discussionNew/action';
 
 function AddDiscussionPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const authUser = useSelector((state) => state.authUser);
 
   const onAddDiscussion = (title, category, body) => {
     dispatch(asyncCreateDiscussion(title, category, body));
+    navigate('/discussions');
   };
 
   return (
