@@ -1,7 +1,7 @@
 import { ActionType } from './action';
 
 const initialState = {
-  discussion: null,
+  discussions: null,
 };
 
 const discussionNewReducer = (state = initialState, action = {}) => {
@@ -9,7 +9,7 @@ const discussionNewReducer = (state = initialState, action = {}) => {
     case ActionType.CREATE_DISCUSSION:
       return {
         ...state,
-        discussion: action.payload.data.discussion,
+        discussions: action.payload.data.discussions,
       };
     default:
       return state;
