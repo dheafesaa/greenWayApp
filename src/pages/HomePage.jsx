@@ -50,7 +50,7 @@ function HomePage() {
         </Box>
         <Box py={6}>
           <Title title="Campaign" />
-          <CampaignCardList campaignCards={limitedCampaigns} />
+          <CampaignCardList campaignCards={limitedCampaigns} showSeeAll />
         </Box>
         <Box py={6}>
           <Title title="People Are Talking . ." />

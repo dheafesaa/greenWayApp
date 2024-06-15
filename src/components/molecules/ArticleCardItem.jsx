@@ -24,7 +24,7 @@ function ArticleCardItem({ picture, title, link }) {
               variant="body1"
               sx={{
                 display: '-webkit-box',
-                '-webkit-box-orient': 'vertical',
+                WebkitBoxOrient: 'vertical',
                 WebkitLineClamp: 1,
                 overflow: 'hidden',
                 textOverflow: 'ellipsis',
