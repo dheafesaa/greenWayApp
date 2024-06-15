@@ -11,6 +11,7 @@ import TestimoniCardList from '../components/organisms/TestimoniCardList';
 import CommunityLayout from '../components/organisms/CommunityLayout';
 import Title from '../components/atoms/Title';
 import CardVideo from '../components/atoms/CardVideo';
+import { categoryCards, purposeCards } from '../utils/data';
 import { asyncPopulateCampaignsAndReviews } from '../states/shared/action';
 
 function HomePage() {
@@ -21,33 +22,6 @@ function HomePage() {
   useEffect(() => {
     dispatch(asyncPopulateCampaignsAndReviews());
   }, [dispatch]);
-
-  const categoryCards = [
-    { title: '14', description: 'Initiatives' },
-    { title: '52', description: 'Destinations' },
-    { title: '31', description: 'Campaigns' },
-    { title: '25', description: 'Articles' },
-  ];
-
-  const purposeCards = [
-    {
-      id: 1,
-      title: 'Explore Destinations',
-      description:
-        'Explore travel destination and share experience with exploler.',
-    },
-    {
-      id: 2,
-      title: 'Sustainable Journeys',
-      description: 'Discover our curated selection of campaign destinations.',
-    },
-    {
-      id: 3,
-      title: 'Green Travel Actions',
-      description:
-        'Learn about our initiatives for sustainable travel awareness.',
-    },
-  ];
 
   const limitedCampaigns = campaigns.slice(0, 4);
 
