@@ -11,7 +11,7 @@ const detailDiscussionReducer = (state = initialState, action = {}) => {
         ...state,
         detailDiscussion: action.payload.detailDiscussion,
       };
-    case ActionType.TOGGLE_LIKE_DISCUSSION:
+    case ActionType.TOGGLE_LIKE_DISCUSSION_DETAIL:
       return {
         ...state,
         detailDiscussion: {
@@ -24,7 +24,7 @@ const detailDiscussionReducer = (state = initialState, action = {}) => {
             .filter((id) => id !== action.payload.userId),
         },
       };
-    case ActionType.TOGGLE_UNLIKE_DISCUSSION:
+    case ActionType.TOGGLE_UNLIKE_DISCUSSION_DETAIL:
       return {
         ...state,
         detailDiscussion: {
@@ -37,7 +37,7 @@ const detailDiscussionReducer = (state = initialState, action = {}) => {
             .filter((id) => id !== action.payload.userId),
         },
       };
-    case ActionType.TOGGLE_NEUTRALIZE_DISCUSSION:
+    case ActionType.TOGGLE_NEUTRALIZE_DISCUSSION_DETAIL:
       return {
         ...state,
         detailDiscussion: {
