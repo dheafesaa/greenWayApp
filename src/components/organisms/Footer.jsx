@@ -26,9 +26,9 @@ function Footer() {
               <Grid item xs={12} md={4}>
                 <Typography variant="h6" color="inherit">Navigation</Typography>
                 <Stack spacing={1}>
-                  <Typography component={Link} to="/" variant="body1" color="inherit" sx={{ textDecoration: 'none' }}>Destination</Typography>
-                  <Typography component={Link} to="/" variant="body1" color="inherit" sx={{ textDecoration: 'none' }}>Campaign</Typography>
-                  <Typography component={Link} to="/" variant="body1" color="inherit" sx={{ textDecoration: 'none' }}>Community</Typography>
+                  <Typography component={Link} to="/destinations" variant="body1" color="inherit" sx={{ textDecoration: 'none' }}>Destination</Typography>
+                  <Typography component={Link} to="/campaigns" variant="body1" color="inherit" sx={{ textDecoration: 'none' }}>Campaign</Typography>
+                  <Typography component={Link} to="/discussions" variant="body1" color="inherit" sx={{ textDecoration: 'none' }}>Community</Typography>
                 </Stack>
               </Grid>
               <Grid item xs={12} md={4}>

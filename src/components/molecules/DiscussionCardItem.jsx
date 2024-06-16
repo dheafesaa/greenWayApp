@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
@@ -36,6 +36,7 @@ function DiscussionCardItem({
   showDislikes,
   showComments,
 }) {
+  const navigate = useNavigate();
   const isDiscussionLiked = upVotesBy.includes(authUser);
   const isDiscussionUnliked = downVotesBy.includes(authUser);
 
@@ -55,6 +56,10 @@ function DiscussionCardItem({
     } else {
       neutralize(id);
     }
+  };
+
+  const handleComment = () => {
+    navigate(`/discussions/${id}`);
   };
 
   return (
@@ -128,6 +133,7 @@ function DiscussionCardItem({
               Icon={BiComment}
               label={comments}
               color={Colors.primary.soft}
+              onClick={handleComment}
             />
           )}
         </Box>

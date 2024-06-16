@@ -38,7 +38,7 @@ function Navbar({ authUser, signOut }) {
       <AppBar position="fixed" sx={{ background: Colors.secondary.soft, boxShadow: 'none' }}>
         <Container maxWidth="lg">
           <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography variant="h4" sx={{ mb: 0 }}>
+            <Typography variant="h4" component={Link} to="/" sx={{ mb: 0, textDecoration: 'none' }}>
               <span style={{ color: Colors.secondary.hard }}>Green</span>
               <span style={{ color: '#000' }}>Way</span>
             </Typography>
