@@ -2,10 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
-import imgRegister from '../assets/imgRegister.png';
 import AuthContent from '../components/molecules/AuthContent';
 import RegisterInput from '../components/organisms/RegisterInput';
 import { asyncRegisterUser } from '../states/users/action';
+import { imgRegister } from '../utils/data';
 
 function RegisterPage() {
   const navigate = useNavigate();
