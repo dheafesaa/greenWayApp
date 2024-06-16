@@ -2,9 +2,6 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import imgWelcomeHome from '../assets/imgWelcomeHome.png';
-import imgProduct from '../assets/imgProduct.png';
-import imgCommunity from '../assets/imgCommunity.png';
 import HeroLayout from '../components/organisms/HeroLayout';
 import CategoryCardList from '../components/organisms/CategoryCardList';
 import ProductLayout from '../components/organisms/ProductLayout';
@@ -14,7 +11,14 @@ import TestimoniCardList from '../components/organisms/TestimoniCardList';
 import CommunityLayout from '../components/organisms/CommunityLayout';
 import Title from '../components/atoms/Title';
 import CardVideo from '../components/atoms/CardVideo';
-import { categoryCards, purposeCards, videoWonderfulIndonesia } from '../utils/data';
+import {
+  categoryCards,
+  imgCommunity,
+  imgProduct,
+  imgWelcomeHome,
+  purposeCards,
+  videoWonderfulIndonesia,
+} from '../utils/data';
 import { asyncPopulateCampaignsAndReviews } from '../states/shared/action';
 
 function HomePage() {

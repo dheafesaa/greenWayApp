@@ -4,12 +4,12 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import imgAboutUs from '../assets/imgAboutUs.png';
 import Title from '../components/atoms/Title';
 import ProfileCardList from '../components/organisms/ProfileCardList';
 import Header from '../components/atoms/Header';
 import AboutGreenWay from '../components/organisms/AboutGreenWay';
 import { asyncReceiveAboutUs } from '../states/aboutUS/action';
+import { imgAboutUs } from '../utils/data';
 
 function AboutUsPage() {
   const theme = useTheme();
