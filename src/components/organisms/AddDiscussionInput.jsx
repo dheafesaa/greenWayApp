@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Alert from '@mui/material/Alert';
 import useInput from '../../hooks/useInput';
+import Alert from '../atoms/Alert';
 import InputText from '../atoms/InputText';
 
 function AddDiscussionInput({ addDiscussion }) {
@@ -38,7 +38,7 @@ function AddDiscussionInput({ addDiscussion }) {
       autoComplete="off"
       onSubmit={handleSubmit}
     >
-      {error && <Alert severity="error">{error}</Alert>}
+      {error && <Alert severity="error" body={error} />}
       <InputText id="title" name="title" label="Title" value={title} onChange={onTitleChange} required />
       <InputText id="category" name="category" label="Category" value={category} onChange={onCategoryChange} required />
       <InputText
