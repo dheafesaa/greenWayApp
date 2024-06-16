@@ -15,12 +15,13 @@ function receiveUsersActionCreator(users) {
 
 function asyncRegisterUser({
   id, email, name, password,
-}) {
+}, navigate) {
   return async () => {
     try {
       await api.register({
         id, email, name, password,
       });
+      navigate('/login');
     } catch (error) {
       alert(error.message);
     }

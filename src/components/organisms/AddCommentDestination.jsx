@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import useInput from '../../hooks/useInput';
+import Alert from '../atoms/Alert';
 import InputText from '../atoms/InputText';
 
 function AddCommentDestination({ onSubmit }) {
   const [content, onContentChange, setContent] = useInput('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit(content);
-    setContent('');
+    if (!content.trim()) {
+      setError('Please fill in the comment field.');
+    } else {
+      setError('');
+      onSubmit(content);
+      setContent('');
+    }
   };
 
   return (
@@ -23,6 +30,7 @@ function AddCommentDestination({ onSubmit }) {
       py={4}
       onSubmit={handleSubmit}
     >
+      {error && <Alert severity="error" body={error} />}
       <InputText
         id="content"
         name="content"

@@ -5,7 +5,7 @@ import AlertTitle from '@mui/material/AlertTitle';
 
 function Alert({ severity, title, body }) {
   return (
-    <AlertMUI severity={severity}>
+    <AlertMUI severity={severity} sx={{ width: '100%' }}>
       <AlertTitle>{title}</AlertTitle>
       {body}
     </AlertMUI>
