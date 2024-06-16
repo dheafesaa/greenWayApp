@@ -123,7 +123,7 @@ function Navbar({ authUser, signOut }) {
 
 const authUserShape = {
   id: PropTypes.string,
-  name: PropTypes.string.isRequired,
+  user: PropTypes.string.isRequired,
 };
 
 Navbar.propTypes = {

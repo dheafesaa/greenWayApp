@@ -1,4 +1,5 @@
 import api from '../../utils/api';
+import { setLoading } from '../loading/action';
 
 const ActionType = {
   RECEIVE_DISCUSSIONS: 'RECEIVE_DISCUSSIONS',
@@ -48,11 +49,16 @@ function toggleNeutralizeDiscussion({ discussionId, userId }) {
 
 function asyncReceiveDiscussions() {
   return async (dispatch) => {
+    dispatch(setLoading(true));
     try {
       const discussionsData = await api.getAllDiscussions();
       dispatch(receiveDiscussions(discussionsData));
     } catch (error) {
       alert(error.message);
+    } finally {
+      setTimeout(() => {
+        dispatch(setLoading(false));
+      }, 3000);
     }
   };
 }

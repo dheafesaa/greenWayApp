@@ -5,6 +5,7 @@ import Container from '@mui/material/Container';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Header from '../components/atoms/Header';
+import Loader from '../components/atoms/Loader';
 import ArticleCardList from '../components/organisms/ArticleCardList';
 import { asyncReceiveArticles } from '../states/articles/action';
 
@@ -13,7 +14,8 @@ function ArticlePage() {
   const isTabletOrDesktop = useMediaQuery(theme.breakpoints.up('sm'));
 
   const dispatch = useDispatch();
-  const articles = useSelector((state) => state?.articles || []);
+  const loading = useSelector((state) => state.loading.loading);
+  const articles = useSelector((state) => state.articles.articles);
 
   useEffect(() => {
     dispatch(asyncReceiveArticles());
@@ -22,25 +24,31 @@ function ArticlePage() {
   return (
     <Box sx={{ py: { xs: 6, md: 8 } }}>
       <Container maxWidth="lg">
-        <Header
-          title={(
-            <>
-              Read Insightful Articles In
-              {' '}
-              {isTabletOrDesktop && <br />}
-              Your Free Time
-            </>
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <Header
+              title={(
+                <>
+                  Read Insightful Articles In
+                  {' '}
+                  {isTabletOrDesktop && <br />}
+                  Your Free Time
+                </>
+              )}
+              subtitle={(
+                <>
+                  There are many choices of useful articles to read, let&#39;s
+                  {' '}
+                  {isTabletOrDesktop && <br />}
+                  make the best your free time to get inspired.
+                </>
+              )}
+            />
+            <ArticleCardList articleCards={articles} />
+          </>
         )}
-          subtitle={(
-            <>
-              There are many choices of useful articles to read, let&#39;s
-              {' '}
-              {isTabletOrDesktop && <br />}
-              make the best your free time to get inspired.
-            </>
-        )}
-        />
-        <ArticleCardList articleCards={articles} />
       </Container>
     </Box>
   );

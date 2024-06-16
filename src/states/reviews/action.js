@@ -16,7 +16,7 @@ function receiveReviews(reviews) {
 function asyncReceiveReviews() {
   return async (dispatch) => {
     try {
-      const reviewsData = await api.getAllreviews();
+      const reviewsData = await api.getAllReviews();
       dispatch(receiveReviews(reviewsData));
     } catch (error) {
       alert(error.message);

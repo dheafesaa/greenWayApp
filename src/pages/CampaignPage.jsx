@@ -5,6 +5,7 @@ import Container from '@mui/material/Container';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Header from '../components/atoms/Header';
+import Loader from '../components/atoms/Loader';
 import CampaignCardList from '../components/organisms/CampaignCardList';
 import { asyncReceiveCampaigns } from '../states/campaigns/action';
 
@@ -13,7 +14,8 @@ function CampaignPage() {
   const isTabletOrDesktop = useMediaQuery(theme.breakpoints.up('sm'));
 
   const dispatch = useDispatch();
-  const campaigns = useSelector((state) => state?.campaigns || []);
+  const loading = useSelector((state) => state.loading.loading);
+  const campaigns = useSelector((state) => state.campaigns.campaigns);
 
   useEffect(() => {
     dispatch(asyncReceiveCampaigns());
@@ -22,26 +24,33 @@ function CampaignPage() {
   return (
     <Box sx={{ py: { xs: 6, md: 8 } }}>
       <Container maxWidth="lg">
-        <Header
-          title={(
-            <>
-              Join the Campaign for Protecting Nature,
-              {' '}
-              {isTabletOrDesktop && <br />}
-              Preserving Beauty
-            </>
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <Header
+              title={(
+                <>
+                  Join the Campaign for Protecting Nature,
+                  {' '}
+                  {isTabletOrDesktop && <br />}
+                  Preserving Beauty
+                </>
+              )}
+              subtitle={(
+                <>
+                  Join our efforts to safeguard the natural wonders of
+                  Indonesia.
+                  {' '}
+                  {isTabletOrDesktop && <br />}
+                  Explore our environmental initiatives and be part of the
+                  change for a sustainable future.
+                </>
+              )}
+            />
+            <CampaignCardList campaignCards={campaigns} />
+          </>
         )}
-          subtitle={(
-            <>
-              Join our efforts to safeguard the natural wonders of Indonesia.
-              {' '}
-              {isTabletOrDesktop && <br />}
-              Explore our environmental initiatives and be part of the change for
-              a sustainable future.
-            </>
-        )}
-        />
-        <CampaignCardList campaignCards={campaigns} />
       </Container>
     </Box>
   );

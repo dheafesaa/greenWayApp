@@ -1,4 +1,5 @@
 import api from '../../utils/api';
+import { setLoading } from '../loading/action';
 
 const ActionType = {
   RECEIVE_DETAIL_DISCUSSION: 'RECEIVE_DETAIL_DISCUSSION',
@@ -94,11 +95,16 @@ function createCommentDiscussion(comment) {
 
 function asyncReceiveDetailDiscussion(discussionId) {
   return async (dispatch) => {
+    dispatch(setLoading(true));
     try {
       const detailDiscussionData = await api.getDetailDiscussion(discussionId);
       dispatch(receiveDetailDiscussion(detailDiscussionData));
     } catch (error) {
       alert(error.message);
+    } finally {
+      setTimeout(() => {
+        dispatch(setLoading(false));
+      }, 1000);
     }
   };
 }

@@ -3,11 +3,13 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 import Typography from '@mui/material/Typography';
+import Alert from '../components/atoms/Alert';
+import Loader from '../components/atoms/Loader';
 import Title from '../components/atoms/Title';
 import DetailDiscussion from '../components/organisms/DetailDiscussion';
+import CommentDiscussionCardList from '../components/organisms/CommentDiscussionCardList';
+import AddCommentDiscussion from '../components/organisms/AddCommentDiscussion';
 import {
   asyncCreateCommentDiscussion,
   asyncReceiveDetailDiscussion,
@@ -18,13 +20,12 @@ import {
   asyncToggleUnlikeComment,
   asyncToggleUnlikeDetailDiscussion,
 } from '../states/detailDiscussion/action';
-import CommentDiscussionCardList from '../components/organisms/CommentDiscussionCardList';
-import AddCommentDiscussion from '../components/organisms/AddCommentDiscussion';
 
 function DetailDiscussionPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authUser);
+  const loading = useSelector((state) => state.loading.loading);
   const detailDiscussion = useSelector((state) => state.detailDiscussion.detailDiscussion);
 
   useEffect(() => {
@@ -66,38 +67,42 @@ function DetailDiscussionPage() {
   return (
     <Box sx={{ py: { xs: 6, md: 8 } }}>
       <Container maxWidth="lg">
-        <Title title="Detail Discussion" textAlign="left" />
-        <DetailDiscussion
-          {...detailDiscussion}
-          authUser={authUser ? authUser.id : null}
-          like={(discussionId) => onLike(discussionId)}
-          unlike={(discussionId) => onUnlike(discussionId)}
-          neutralize={(discussionId) => onNeutralize(discussionId)}
-        />
-        <Box py={4}>
-          <Typography variant="h4">
-            Comments
-            {' '}
-            (
-            {detailDiscussion?.comments?.length}
-            )
-          </Typography>
-          {authUser ? (
-            <AddCommentDiscussion onSubmit={onSubmitComment} />
-          ) : (
-            <Alert severity="warning">
-              <AlertTitle>Permission Required</AlertTitle>
-              Please login or create an account to start a new discussion!
-            </Alert>
-          )}
-          <CommentDiscussionCardList
-            {...detailDiscussion}
-            authUser={authUser ? authUser.id : null}
-            like={(commentId) => onLikeComment(commentId)}
-            unlike={(commentId) => onUnlikeComment(commentId)}
-            neutralize={(commentId) => onNeutralizeComment(commentId)}
-          />
-        </Box>
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <Title title="Detail Discussion" textAlign="left" />
+            <DetailDiscussion
+              {...detailDiscussion}
+              authUser={authUser ? authUser.id : null}
+              like={(discussionId) => onLike(discussionId)}
+              unlike={(discussionId) => onUnlike(discussionId)}
+              neutralize={(discussionId) => onNeutralize(discussionId)}
+            />
+            <Box py={4}>
+              <Typography variant="h4">
+                Comments (
+                {detailDiscussion?.comments?.length}
+                )
+              </Typography>
+              {authUser ? (
+                <AddCommentDiscussion onSubmit={onSubmitComment} />
+              ) : (
+                <Alert
+                  title="Permission Required"
+                  body="Please login or create an account to start a new discussion!"
+                />
+              )}
+              <CommentDiscussionCardList
+                {...detailDiscussion}
+                authUser={authUser ? authUser.id : null}
+                like={(commentId) => onLikeComment(commentId)}
+                unlike={(commentId) => onUnlikeComment(commentId)}
+                neutralize={(commentId) => onNeutralizeComment(commentId)}
+              />
+            </Box>
+          </>
+        )}
       </Container>
     </Box>
   );
