@@ -7,6 +7,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Alert from '../components/atoms/Alert';
 import Header from '../components/atoms/Header';
+import Loader from '../components/atoms/Loader';
 import Search from '../components/atoms/Search';
 import DestinationCardList from '../components/organisms/DestinationCardList';
 import { asyncReceiveDestinations } from '../states/destinations/action';
@@ -17,7 +18,9 @@ function DestinationPage() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const destinations = useSelector((state) => state?.destinations || []);
+  const loading = useSelector((state) => state.loading.loading);
+  const destinations = useSelector((state) => state.destinations.destinations);
+
   const [filteredDestinations, setFilteredDestinations] = useState(destinations);
   const [searchKeyword, setSearchKeyword] = useState('');
 
@@ -27,8 +30,8 @@ function DestinationPage() {
 
   useEffect(() => {
     setFilteredDestinations(
-      destinations.filter((destination) => destination.name
-        .toLowerCase().includes(searchKeyword.toLowerCase())),
+      destinations.filter((destination) => destination.name.toLowerCase()
+        .includes(searchKeyword.toLowerCase())),
     );
   }, [destinations, searchKeyword]);
 
@@ -40,37 +43,45 @@ function DestinationPage() {
   return (
     <Box sx={{ py: { xs: 6, md: 8 } }}>
       <Container maxWidth="lg">
-        <Header
-          title={(
-            <>
-              Find The Next Places to Explore
-              {' '}
-              {isTabletOrDesktop && <br />}
-              The Beauty of The Indonesia
-            </>
-        )}
-          subtitle={(
-            <>
-              Discover your dream adventure here. Every corner of Indonesia&#39;s beauty awaits
-              {' '}
-              {isTabletOrDesktop && <br />}
-              you with unforgettable memories. With Greenway, explore it all now!
-            </>
-        )}
-        />
-        <Box mt={4}>
-          <Search onSearch={handleSearch} />
-        </Box>
-        {filteredDestinations.length > 0 ? (
-          <DestinationCardList destinationCards={filteredDestinations} />
+        {loading ? (
+          <Loader />
         ) : (
-          <Box py={4}>
-            <Alert
-              severity="info"
-              title="Information"
-              body="Sorry, no destinations match your search criteria. Please try again with different keywords."
+          <>
+            <Header
+              title={(
+                <>
+                  Find The Next Places to Explore
+                  {' '}
+                  {isTabletOrDesktop && <br />}
+                  The Beauty of The Indonesia
+                </>
+              )}
+              subtitle={(
+                <>
+                  Discover your dream adventure here. Every corner of
+                  Indonesia&#39;s beauty awaits
+                  {' '}
+                  {isTabletOrDesktop && <br />}
+                  you with unforgettable memories. With Greenway, explore it all
+                  now!
+                </>
+              )}
             />
-          </Box>
+            <Box mt={4}>
+              <Search onSearch={handleSearch} />
+            </Box>
+            {filteredDestinations.length > 0 ? (
+              <DestinationCardList destinationCards={filteredDestinations} />
+            ) : (
+              <Box py={4}>
+                <Alert
+                  severity="info"
+                  title="Information"
+                  body="Sorry, no destinations match your search criteria. Please try again with different keywords."
+                />
+              </Box>
+            )}
+          </>
         )}
       </Container>
     </Box>

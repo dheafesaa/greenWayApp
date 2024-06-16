@@ -6,14 +6,19 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import DetailDestination from '../components/organisms/DetailDestination';
 import Alert from '../components/atoms/Alert';
+import Loader from '../components/atoms/Loader';
 import AddCommentDestination from '../components/organisms/AddCommentDestination';
 import CommentDestinationCardList from '../components/organisms/CommentDestinationCardList';
-import { asyncCreateCommentDestination, asyncReceiveDetailDestination } from '../states/detailDestination/action';
+import {
+  asyncCreateCommentDestination,
+  asyncReceiveDetailDestination,
+} from '../states/detailDestination/action';
 
 function DetailDestinationPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authUser);
+  const loading = useSelector((state) => state.loading.loading);
   const detailDestination = useSelector((state) => state.detailDestination.detailDestination);
 
   useEffect(() => {
@@ -22,7 +27,9 @@ function DetailDestinationPage() {
 
   const onSubmitComment = (comment) => {
     if (detailDestination) {
-      dispatch(asyncCreateCommentDestination(detailDestination.idDestination, comment));
+      dispatch(
+        asyncCreateCommentDestination(detailDestination.idDestination, comment),
+      );
     }
   };
 
@@ -33,22 +40,31 @@ function DetailDestinationPage() {
   return (
     <Box sx={{ pt: 2, pb: { xs: 6, md: 8 } }}>
       <Container maxWidth="lg">
-        <DetailDestination {...detailDestination} />
-        <Box py={4}>
-          <Typography variant="h4">
-            Comments (
-            {detailDestination.comments.length}
-            )
-          </Typography>
-          {authUser ? (
-            <AddCommentDestination onSubmit={onSubmitComment} />
-          ) : (
-            <Alert title="Permission Required" body="Please login or create an account to start a new comment!" />
-          )}
-          <CommentDestinationCardList
-            comments={detailDestination.comments}
-          />
-        </Box>
+        {loading ? (
+          <Loader />
+        ) : (
+          <>
+            <DetailDestination {...detailDestination} />
+            <Box py={4}>
+              <Typography variant="h4">
+                Comments (
+                {detailDestination.comments.length}
+                )
+              </Typography>
+              {authUser ? (
+                <AddCommentDestination onSubmit={onSubmitComment} />
+              ) : (
+                <Alert
+                  title="Permission Required"
+                  body="Please login or create an account to start a new comment!"
+                />
+              )}
+              <CommentDestinationCardList
+                comments={detailDestination.comments}
+              />
+            </Box>
+          </>
+        )}
       </Container>
     </Box>
   );
