@@ -2,10 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
+import imgLogin from '../assets/imgLogin.png';
 import AuthContent from '../components/molecules/AuthContent';
 import LoginInput from '../components/organisms/LoginInput';
 import { asyncSetAuthUser } from '../states/authUser/action';
-import { imgLogin } from '../utils/data';
 
 function LoginPage() {
   const dispatch = useDispatch();
