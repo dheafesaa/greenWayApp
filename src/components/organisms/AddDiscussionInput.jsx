@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -7,6 +8,7 @@ import useInput from '../../hooks/useInput';
 import InputText from '../atoms/InputText';
 
 function AddDiscussionInput({ addDiscussion }) {
+  const navigate = useNavigate();
   const [title, onTitleChange] = useInput('');
   const [category, onCategoryChange] = useInput('');
   const [body, onBodyChange] = useInput('');
@@ -22,6 +24,7 @@ function AddDiscussionInput({ addDiscussion }) {
 
     setError('');
     addDiscussion(title, category, body);
+    navigate('/discussions');
   };
 
   return (

@@ -1,14 +1,18 @@
 import { ActionType } from './action';
 
-const discussionNewReducer = (discussion = null, action = {}) => {
+const initialState = {
+  discussion: null,
+};
+
+const discussionNewReducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case ActionType.CREATE_DISCUSSION:
       return {
-        ...discussion,
+        ...state,
         discussion: action.payload.data.discussion,
       };
     default:
-      return discussion;
+      return state;
   }
 };
 
