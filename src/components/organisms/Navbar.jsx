@@ -13,6 +13,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Hidden from '@mui/material/Hidden';
 import Colors from '../atoms/Colors';
+import Logo from '../atoms/Logo';
 
 function Navbar({ authUser, signOut }) {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -38,10 +39,7 @@ function Navbar({ authUser, signOut }) {
       <AppBar position="fixed" sx={{ background: Colors.secondary.soft, boxShadow: 'none' }}>
         <Container maxWidth="lg">
           <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography variant="h4" component={Link} to="/" sx={{ mb: 0, textDecoration: 'none' }}>
-              <span style={{ color: Colors.secondary.hard }}>Green</span>
-              <span style={{ color: '#000' }}>Way</span>
-            </Typography>
+            <Logo />
             <Hidden smDown>
               <Box sx={{ display: 'flex', justifyContent: 'center', gap: '24px' }}>
                 {menuItems.map((item) => (
