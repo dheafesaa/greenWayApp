@@ -25,6 +25,8 @@ export const purposeCards = [
   },
 ];
 
+export const logoGreenWay = 'https://firebasestorage.googleapis.com/v0/b/mostgreen.appspot.com/o/Tak_berjudul63-hd__2_-removebg-preview.png?alt=media&token=eca5f180-7753-4567-94a5-6ed13f674861';
+
 export const imgRegister = 'https://firebasestorage.googleapis.com/v0/b/mostgreen.appspot.com/o/beach%201.jpg?alt=media&token=1b00e76b-68cc-4ce3-a205-2981f56b3c42';
 
 export const imgLogin = 'https://firebasestorage.googleapis.com/v0/b/mostgreen.appspot.com/o/semeru.jpg?alt=media&token=1b762c8d-a67a-4c42-a29e-e65c12daa77a';
